@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ParcelKey API</title>
+</head>
+<body>
+    <h1>ParcelKey API</h1>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Home
+        var url = 'http://192.168.0.80:3000';
+
+        // Uni
+        // var url = 'http://192.168.0.80:3000';
+
+        var socket = io(url);
+
+        socket.emit('testchannel','Hello from API');
+
+        socket.on('testchannel', function(msg){
+            console.log('testchannel: ' + msg);
+        });
+    </script>
+</body>
+</html>
