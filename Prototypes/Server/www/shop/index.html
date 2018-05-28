@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Amazon</title>
+    <script src="/shop/src/bluetooth.js"></script>
 </head>
 <body>
     <h1>Amazon.de</h1>
+    <button onclick="onButtonClick()">Connect Bluetooth</button>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
         // Home
-        var url = 'http://192.168.0.80:3000';
+        var url = 'https://192.168.0.80:3000';
 
         // Uni
         // var url = 'http://192.168.0.80:3000';
