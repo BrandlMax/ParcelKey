@@ -1,8 +1,15 @@
+// SETTINGS //////////////////  
+
 // Home
-var url = '192.168.0.80'
+// var url = '192.168.0.80'
+
+// iMac
+var url = '192.168.0.150'
 
 // Uni
-// var url = '192.168.0.80'
+// var url = ''
+
+// SERVER //////////////////  
 
 // HTTPS for Web Bluetooth API
 var path = require('path')
