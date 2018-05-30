@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ParcelKeySim</title>
+</head>
+<body>
+    <h1>ParcelKeySim</h1>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+        // Home
+        // var url = 'https://192.168.0.80:3000';
+
+        // iMac
+        // var url = 'https://192.168.0.150:3000';
+
+        // Uni
+        // var url = 'http://192.168.0.80:3000';
+
+        // Uni Netzwerk
+        var url = '172.16.19.243:1337'
+
+        var DATA;
+
+        var socket = io(url);
+
+        socket.emit('testchannel','Hello from Sim');
+
+        socket.on('testchannel', function(msg){
+            console.log('testchannel: ' + msg);
+        });
+
+        socket.on('GYRO', function(data){
+            // console.log('GYRO: ',  data);
+            DATA = data;
+        });
+
+    </script>
+
+    <script src="js/three.js"></script>
+    <script>
+        var scene = new THREE.Scene();
+        var aspect = window.innerWidth / window.innerHeight;
+        var camera = new THREE.PerspectiveCamera( 75, aspect, 0.1, 1000 );
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        document.body.appendChild( renderer.domElement );
+
+        var geometry = new THREE.BoxGeometry( 3, 3, 3 );
+        var material = new THREE.MeshNormalMaterial();
+        var cube = new THREE.Mesh( geometry, material );
+        scene.add( cube );
+        camera.position.z = 5;
+
+        var render = function () {
+            // console.log(DATA)
+            requestAnimationFrame( render );
+            if(DATA.gyro != undefined){
+                //console.log("DATA", DATA.accelerometer)
+                // Oben / Unten
+                cube.rotation.x = DATA.gyro.yaw.angle / 360 * Math.PI;
+                // Links / Rechts
+                cube.rotation.y = DATA.gyro.pitch.angle / 360 * Math.PI;
+                // Diagonal
+                cube.rotation.z = DATA.gyro.roll.angle / 360 * Math.PI;
+            }
+
+            renderer.render( scene, camera );
+        };
+
+        render();
+    </script>
+</body>
+</html>
+
+
+
