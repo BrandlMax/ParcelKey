@@ -5,21 +5,15 @@ const io = require('socket.io-client');
 
 const i2c = require('i2c-bus');
 const oledi2c = require('oled-i2c-bus');
-const mpu9250 = require('mpu9250');
 const oledFont = require('oled-font-5x7');
-const fs = require('fs');
-const path = require('path');
-const noble = require('noble');
-const KalmanFilter = require('kalmanjs').default;
 
-const getGyroOffset = require('./modules/calibrate-gyro');
 const getGyroData = require('./modules/getGyroData');
-const getDistance = require('./modules/getDistance');
-
-const kf = new KalmanFilter();
+const getBeaconDistance = require('./modules/getBeaconDistance');
 
 const test = require('./modules/test');
 test("Hello Module");
+
+process.setMaxListeners(0);
 
 // URL / PORTS
 // Home
@@ -43,45 +37,21 @@ oled.setCursor(1, 1);
 oled.writeString(oledFont, 2, 'Init Gyro...', 1, true);
 
 
-// GYRO
-const accelJson = fs.readFileSync(path.resolve(__dirname, 'accel.json'));
-const ACCEL_CALIBRATION = JSON.parse(accelJson);
-const mpu = new mpu9250({
-    device: '/dev/i2c-1',
-    DEBUG: false,
-    GYRO_FS: 0,
-    ACCEL_FS: 0,
-    scaleValues: true,
-    gyroBiasOffset: getGyroOffset(),
-    accelCalibration: ACCEL_CALIBRATION,
-});
-
-function GyroListener(){
-    let GyroData = getGyroData(mpu);
-    console.log(GyroData);
-}
-
-// BEACON TRACKING
-noble.on('discover', function(peripheral) { 
-    var macAddress = peripheral.uuid;
-    var rss = peripheral.rssi;
-    //var localName = advertisement.localName; 
-    //console.log('found device: ', macAddress, ' ', ' ', rss);
-    if(macAddress.substr(-2) === 'b5') {
-        const distance = kf.filter(getDistance(rss));
-        oled.clearDisplay();
-        oled.setCursor(1, 1);
-        oled.writeString(oledFont, 1, `${distance}`.substr(0, 4) + 'm', 1, true);
-    }
-});
-
+// LOOPS
 // GyroData Loop
-if (mpu.initialize()) {
-    setInterval(GyroListener, 300);
-}
-// BeaconTracking Loop
 setInterval(() => {
-    noble.startScanning([]);
+    let GyroData = getGyroData();
+    if(GyroData.init){
+        console.log(GyroData);
+    }
+}, 300);
+
+// Beacon Scanning Loop
+setInterval(() => {
+    let BeaconDistance = getBeaconDistance();
+    oled.clearDisplay();
+    oled.setCursor(1, 1);
+    oled.writeString(oledFont, 1, `${BeaconDistance}`.substr(0, 4) + 'm', 1, true);
 }, 1000);
 
 
