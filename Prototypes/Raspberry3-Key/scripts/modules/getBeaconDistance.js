@@ -6,6 +6,12 @@ const kf = new KalmanFilter();
 
 const getDistance = require('./getDistance');
 
+let onState;
+noble.on('stateChange', function(state) {
+    console.log(state);
+    onState = state
+});
+
 let distance;
 noble.on('discover', function(peripheral) { 
     var macAddress = peripheral.uuid;
@@ -23,9 +29,13 @@ noble.on('discover', function(peripheral) {
     }
 });
 
-module.exports = () => {
-    noble.startScanning([]);
 
+
+module.exports = () => {
+
+    // console.log(noble.state);
+    noble.startScanning([]);
+    
     if(distance != undefined){
         return distance;
     }else{
