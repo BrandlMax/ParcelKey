@@ -27,12 +27,16 @@ function getGyroData() {
 
         // Only get the magnetometer values every 100Hz
         const getMag = cnt++ % 2;
-        if (getMag) {
-            m9 = mpu.getMotion6().concat(lastMag);
-        } else {
-            m9 = mpu.getMotion9();
-            lastMag = [m9[6], m9[7], m9[8]];
-        }
+        // if (getMag) {
+        //     m9 = mpu.getMotion6().concat(lastMag);
+        // } else {
+        //     m9 = mpu.getMotion9();
+        //     lastMag = [m9[6], m9[7], m9[8]];
+        // }
+
+        m9 = mpu.getMotion9();
+        lastMag = [m9[6], m9[7], m9[8]];
+        
         const end = new Date().getTime();
         const t = (end - start) / 1000;
 

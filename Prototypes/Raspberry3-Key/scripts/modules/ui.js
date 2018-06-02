@@ -57,7 +57,7 @@ module.exports = class UI{
 
         this.oled.setCursor(1, 1);
         let gX = Math.round(gyroData.gyro.x * 100) / 100;
-        this.oled.writeString(oledFont, 1, `gX: ${gX}`, 1, true);
+        this.oled.writeString(oledFont, 1, `gX:${gX}`, 1, true);
         
         this.oled.setCursor(1, 10);
         let gY = Math.round(gyroData.gyro.y * 100) / 100;
@@ -68,17 +68,17 @@ module.exports = class UI{
         this.oled.writeString(oledFont, 1, `gZ:${gZ}`, 1, true);
 
 
-        this.oled.setCursor(80, 1);
+        this.oled.setCursor(60, 1);
         let aX = Math.round(gyroData.accel.x * 100) / 100;
-        this.oled.writeString(oledFont, 1, `gX: ${aX}`, 1, true);
+        this.oled.writeString(oledFont, 1, `aX:${aX}`, 1, true);
         
-        this.oled.setCursor(80, 10);
+        this.oled.setCursor(60, 10);
         let aY = Math.round(gyroData.accel.y * 100) / 100;
-        this.oled.writeString(oledFont, 1, `gY:${aY}`, 1, true);
+        this.oled.writeString(oledFont, 1, `aY:${aY}`, 1, true);
 
-        this.oled.setCursor(80, 20);
+        this.oled.setCursor(60, 20);
         let aZ = Math.round(gyroData.accel.z * 100) / 100;
-        this.oled.writeString(oledFont, 1, `gZ:${aZ}`, 1, true);
+        this.oled.writeString(oledFont, 1, `aZ:${aZ}`, 1, true);
         
     }
 
