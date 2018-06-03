@@ -41,13 +41,13 @@ module.exports = class pkOS{
             this.checkState();
             this.checkInput();
 
-        }, 100);
+        }, 300);
 
         // Beacon / Distance Scanning Loop
         setInterval(() => {
             let BeaconDistance = getBeaconDistance();
             this.DISTANCE = BeaconDistance;
-        }, 1000); 
+        }, 300); 
     }
 
     // INPUT MANAGER
@@ -96,7 +96,7 @@ module.exports = class pkOS{
             if(this.gYBefore != 'init'){
 
                 let gYdif = Math.abs(this.gYBefore - gYNow);
-                console.log('dif:', gYdif);
+                // console.log('dif:', gYdif);
                 // console.log('gZ:',this.GYRO.gyro.z);
 
                 if(gYdif > 20.0){
@@ -168,7 +168,13 @@ module.exports = class pkOS{
     }
 
     stateDistanceMeters(){
-        UI.writeDistance(this.DISTANCE);
+        UI.writeDistance(this.DISTANCE, 1);
+        console.log(this.DISTANCE);
+        if(this.selectLeft){
+            console.log('Left');
+            console.log('________________');
+            this.setState('stateGyroData');
+        }
     }
 
     stateDistanceMinutes(){
@@ -192,6 +198,7 @@ module.exports = class pkOS{
         if(this.selectRight){
             console.log('Right');
             console.log('________________');
+            this.setState('stateDistanceMeters');
         }
 
         if(this.selectLeft){

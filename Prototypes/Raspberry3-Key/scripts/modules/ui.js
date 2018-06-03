@@ -29,7 +29,7 @@ module.exports = class UI{
      * Write Current Distance
      * @param {*} distance 
      */
-    writeDistance(distance){
+    writeDistance(distance, size = 2){
         this.oled.clearDisplay();
         this.oled.setCursor(1, 1);
         this.oled.writeString(oledFont, 1, `${distance}`.substr(0, 4) + 'm', 1, true);
@@ -43,7 +43,7 @@ module.exports = class UI{
     writeText(text, size = 1){
         this.oled.clearDisplay();
         this.oled.setCursor(1, 1);
-        this.oled.writeString(oledFont, 1, text, 1, true);
+        this.oled.writeString(oledFont, size, text, 1, true);
     }
 
     standBy(){
