@@ -1,0 +1,52 @@
+body{
+    background: #fff;
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    font-size: 16px;
+}
+
+img{
+    width: 100%;
+}
+
+/* Grids */
+
+.sectionGrid{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.contentGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+
+
+/* Section Colors */
+
+.blueSection{
+    color: #fff;
+    background: #1539c6;
+}
+
+.whiteSection{
+    color: #333;
+    background: #fff;
+}
+
+.brownSection{
+    color: #fff;
+    background: #D0B99F
+}
+
+/* Responsive Stuff */
+@media only screen and (max-width: 600px) {
+    .contentGrid{
+        grid-template-columns: 1fr; 
+    }
+}
