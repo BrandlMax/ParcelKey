@@ -6,7 +6,16 @@ const getBeaconDistance = require('./getBeaconDistance');
 const UserInterface = require('./ui');
 UI = new UserInterface();
 
+const AmbientLight = require('./ambientLED');
+LIGHT = new AmbientLight(27, 22, 17);
+
 let distanceInterval;
+
+// Already Triggered States
+let lightProblemTriggered = false;
+let lightOkTriggered = false;
+let lightInitTriggered = true;
+let lightStandbyTriggered = false;
 
 module.exports = class pkOS{
     constructor(){
@@ -165,11 +174,20 @@ module.exports = class pkOS{
     stateStartUp(){
         // UI.standBy();
         this.setState('stateGyroData');
+        LIGHT.init();
     }
 
     stateDistanceMeters(){
+
         UI.writeDistance(this.DISTANCE, 1);
         console.log(this.DISTANCE);
+
+        if(!lightOkTriggered){
+            LIGHT.ok();
+            lightOkTriggered = true;
+        }
+        
+
         if(this.selectLeft){
             console.log('Left');
             console.log('________________');
@@ -184,6 +202,11 @@ module.exports = class pkOS{
     stateGyroData(){
         // console.log(this.GYRO);
         UI.writeGYRO(this.GYRO);
+
+        if(!lightInitTriggered){
+            lightInitTriggered = true;
+            LIGHT.init();
+        }
 
         if(this.accept){
             console.log('Accept');

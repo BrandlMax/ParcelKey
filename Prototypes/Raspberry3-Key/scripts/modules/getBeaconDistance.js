@@ -34,7 +34,10 @@ noble.on('discover', function(peripheral) {
 module.exports = () => {
 
     // console.log(noble.state);
-    noble.startScanning([]);
+
+    if(noble.state == "poweredOn"){
+        noble.startScanning([]);
+    }
     
     if(distance != undefined){
         return distance;

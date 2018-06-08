@@ -60,9 +60,9 @@ function getData(){
         compAngleY = pitch,
         compAngleZ = yaw;
 
-    var gyroXrate = values[3] / 131.0;
-    var gyroYrate = values[4] / 131.0;
-    var gyroZrate = values[5] / 131.0;
+    gyroXrate = values[3] / 131.0;
+    gyroYrate = values[4] / 131.0;
+    gyroZrate = values[5] / 131.0;
 
     var micros = function() {
 		return new Date().getTime();

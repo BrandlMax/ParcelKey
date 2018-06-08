@@ -32,7 +32,7 @@ module.exports = class UI{
     writeDistance(distance, size = 2){
         this.oled.clearDisplay();
         this.oled.setCursor(1, 1);
-        this.oled.writeString(oledFont, 1, `${distance}`.substr(0, 4) + 'm', 1, true);
+        this.oled.writeString(oledFont, size, `${distance}`.substr(0, 4) + 'm', 1, true);
     }
 
     /**
