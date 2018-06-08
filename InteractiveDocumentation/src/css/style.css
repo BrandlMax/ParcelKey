@@ -15,6 +15,7 @@ img{
 .sectionGrid{
     padding-top: 80px;
     padding-bottom: 80px;
+    background-image: url("/src/img/Bildschirmfoto 2018-06-08 um 10.02.09.png");
 }
 
 .contentGrid{
@@ -31,7 +32,7 @@ img{
 
 .blueSection{
     color: #fff;
-    background: #1539c6;
+
 }
 
 .whiteSection{
