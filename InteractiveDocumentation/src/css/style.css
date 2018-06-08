@@ -10,23 +10,91 @@ img{
     width: 100%;
 }
 
-/* Grids */
+/* Section Grids */
 
-.sectionGrid{
+.sectionGridFirstpage {
     padding-top: 80px;
     padding-bottom: 80px;
     background-image: url("/src/img/Bildschirmfoto 2018-06-08 um 10.02.09.png");
     background-repeat: no-repeat;
     background-size: cover;
     height:600px;
+    color: #fff;
 }
 
-.contentGrid{
+.sectionGridBackimage {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/Group.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+}
+
+.sectionGrid {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+/* Content Grid 2 rows */
+
+
+.contentGridTworows{
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     max-width: 960px;
     margin: 0 auto;
+}
+
+/* rechte Seite mit Text*/
+
+.rightText{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top:200px;
+    margin-right: auto;
+    margin-left: -80px;
+    margin-bottom: auto;
+}
+
+/*linke Seite mit Text*/
+
+.leftText{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top:200px;
+    margin-right: auto;
+    margin-left: -80px;
+    margin-bottom: auto;
+}
+
+/* Content Grid 1 row */
+
+.contentGridOnerow{
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* dünne und dicke zeilenlängen für die einspaltigen Seiten*/
+.onerowbreit{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.oneroweng{
+    text-align: center;
+    width: 500px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 
@@ -35,7 +103,6 @@ img{
 
 .blueSection{
     color: #fff;
-
 }
 
 .whiteSection{
@@ -47,6 +114,50 @@ img{
     color: #fff;
     background: #D0B99F
 }
+
+/* Images */
+
+.FirstpagePic{
+    max-height: 40%;
+    max-width: 40%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top:40px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+}
+
+.leftPic{
+    max-height: 70%;
+    max-width: 70%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top:200px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+}
+
+.minigame{
+    max-height: 80%;
+    max-width: 80%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top:40px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+}
+
+
+
 
 /* Responsive Stuff */
 @media only screen and (max-width: 600px) {
