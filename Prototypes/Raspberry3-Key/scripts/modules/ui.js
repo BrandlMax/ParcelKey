@@ -1,9 +1,6 @@
 const i2c = require('i2c-bus');
 const oledi2c = require('oled-i2c-bus');
 const oledFont = require('oled-font-5x7');
-// const LEDEmbient = require('./ledEmbient.js');
-
-// const LED = new LEDEmbient();
 
 module.exports = class UI{
     constructor(){

@@ -15,12 +15,14 @@ const ParcelKeyOS = require('./modules/parcelKeyOS');
 // INIT
 const OS = new ParcelKeyOS();
 
+// SOCKET SERVER
+const socket = io('http://'+ url +':3000');
+console.log('Server Running');
+
 // BOOT ParcelKeyOS
 OS.boot();
 
-// SOCKET SERVER
-const socket = io('http://'+ url +':3000');
-
+// SOCKETS
 socket.emit('testchannel', 'Hello from RaspberryPi 3');
 
 socket.on('testchannel', function(msg){
@@ -29,6 +31,7 @@ socket.on('testchannel', function(msg){
 
 socket.on('toParcelKey', function(msg){
     console.log('toParcelKey: ' + msg);
+    OS.e.emit('notification', msg);
 });
 
-console.log('Server Running');
+

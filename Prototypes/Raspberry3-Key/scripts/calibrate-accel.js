@@ -89,7 +89,7 @@ function wrapUp() {
     };
 
     fs.writeFileSync(
-        path.resolve(__dirname, '..', 'accel.json'),
+        path.resolve(__dirname, './modules/', 'accel.json'),
         JSON.stringify(calibration),
         'utf8'
     );
