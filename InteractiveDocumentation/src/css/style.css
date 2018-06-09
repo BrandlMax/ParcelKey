@@ -22,7 +22,7 @@ img{
     color: #fff;
 }
 
-.sectionGridBackimage {
+.sectionGridBackimage1 {
     padding-top: 80px;
     padding-bottom: 80px;
     background-image: url("/src/img/Group.png");
@@ -31,9 +31,28 @@ img{
     height:600px;
 }
 
+.sectionGridBackimage2 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/Group1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+}
 .sectionGrid {
     padding-top: 80px;
     padding-bottom: 80px;
+}
+
+
+/* Content Grid 3 rows */
+
+
+.contentGridThreerows{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
 /* Content Grid 2 rows */
@@ -110,9 +129,9 @@ img{
     background: #fff;
 }
 
-.brownSection{
-    color: #fff;
-    background: #D0B99F
+.greySection{
+    color: #000;
+    background: #F3F3F3
 }
 
 /* Images */
