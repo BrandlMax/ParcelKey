@@ -25,7 +25,7 @@ img{
 .sectionGridBackimage1 {
     padding-top: 80px;
     padding-bottom: 80px;
-    background-image: url("/src/img/Group.png");
+    background-image: url("/src/img/blaupakete.png");
     background-repeat: no-repeat;
     background-size: cover;
     height:600px;
@@ -34,16 +34,50 @@ img{
 .sectionGridBackimage2 {
     padding-top: 80px;
     padding-bottom: 80px;
-    background-image: url("/src/img/Group1.png");
+    background-image: url("/src/img/iconsuhr.png");
     background-repeat: no-repeat;
     background-size: cover;
     height:600px;
 }
+
+.sectionGridBackimage3 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/iconort.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+}
+
+.sectionGridBackimage4 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/blauParcels.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+}
+
+.sectionGridBackimage5 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/teamicon.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+}
+
+
 .sectionGrid {
     padding-top: 80px;
     padding-bottom: 80px;
 }
 
+.sectionGrid {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
 
 /* Content Grid 3 rows */
 
@@ -74,7 +108,7 @@ img{
     right: 0;
     margin-top:200px;
     margin-right: auto;
-    margin-left: -80px;
+    margin-left: auto;
     margin-bottom: auto;
 }
 
@@ -87,7 +121,7 @@ img{
     right: 0;
     margin-top:200px;
     margin-right: auto;
-    margin-left: -80px;
+    margin-left: 70px;
     margin-bottom: auto;
 }
 
@@ -106,22 +140,39 @@ img{
     margin-top: 50px;
 }
 
+
 .oneroweng{
     text-align: center;
-    width: 500px;
+    width: 600px;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
 }
+ /*p für 3 rows*/
+.threerows{
+    text-align: left;
+    margin-left: 45px;
 
+}
 
 
 /* Section Colors */
 
+
+.backgroundSection {
+    color:#000000;
+}
+
+.bluebackgroundSection {
+    color:#fff;
+}
+
+
 .blueSection{
     color: #fff;
+    background: #1539C6;
 }
 
 .whiteSection{
@@ -130,6 +181,7 @@ img{
 }
 
 .greySection{
+    height:600px;
     color: #000;
     background: #F3F3F3
 }
@@ -162,6 +214,19 @@ img{
     margin-bottom: auto;
 }
 
+.rightPic{
+    max-height: 70%;
+    max-width: 70%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-top:200px;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
 .minigame{
     max-height: 80%;
     max-width: 80%;
@@ -175,6 +240,12 @@ img{
     margin-bottom: auto;
 }
 
+.ParcekKeyminigame{
+    width: 250px;
+    height: auto;
+    margin-left: 601px;
+    margin-top: -75px;
+}
 
 
 
@@ -184,3 +255,4 @@ img{
         grid-template-columns: 1fr; 
     }
 }
+
