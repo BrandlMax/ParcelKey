@@ -10,12 +10,42 @@ img{
     width: 100%;
 }
 
+
+
+.nav {
+    background-color: #FFFFFF;
+    color: #ffffff;
+
+    padding: 0 0 0 0;
+    margin: 15px;
+    margin-top: 0;
+    top: 3px;
+    width: 100vw;
+    height: 10px;
+}
+
+.nav > li {
+    display: flex;
+    margin-top: 4px;
+    margin-left: -9px;
+    color: #000000;
+    background: white;
+}
+}
+.nav > li > a {
+    text-decoration: none;
+    color: #FFFFFF; }
+
+.nav > li > a:hover {
+    color: #D0B99F; }
+
+
 /* Section Grids */
 
 .sectionGridFirstpage {
     padding-top: 80px;
     padding-bottom: 80px;
-    background-image: url("/src/img/Bildschirmfoto 2018-06-08 um 10.02.09.png");
+    background-image: url("/src/img/hintergrund.png");
     background-repeat: no-repeat;
     background-size: cover;
     height:600px;
@@ -34,7 +64,7 @@ img{
 .sectionGridBackimage2 {
     padding-top: 80px;
     padding-bottom: 80px;
-    background-image: url("/src/img/iconsuhr.png");
+    background-image: url("/src/img/uhricons.png");
     background-repeat: no-repeat;
     background-size: cover;
     height:600px;
@@ -43,7 +73,7 @@ img{
 .sectionGridBackimage3 {
     padding-top: 80px;
     padding-bottom: 80px;
-    background-image: url("/src/img/iconort.png");
+    background-image: url("/src/img/orticons.png");
     background-repeat: no-repeat;
     background-size: cover;
     height:600px;
@@ -75,6 +105,12 @@ img{
 
 .sectionGrid {
     text-align: center;
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+.sectionGrid1{
+    text-align: left;
     padding-top: 20px;
     padding-bottom: 80px;
 }
@@ -181,7 +217,7 @@ img{
 }
 
 .greySection{
-    height:600px;
+    height:650px;
     color: #000;
     background: #F3F3F3
 }
@@ -246,6 +282,32 @@ img{
     margin-left: 601px;
     margin-top: -75px;
 }
+
+/*footer*/
+
+.foo {
+    background-color: #1539C6;
+    color: #ffffff;
+    position: relative;
+    list-style: none;
+    text-align: center;
+    margin: auto;
+    top: 15px;
+    height: 80px;
+    padding: 0;
+}
+
+.foo > li {
+    display: inline-block;
+    padding: 10px 25px 25px 25px;
+    margin-top: 15px;
+}
+.foo > li > a {
+    text-decoration: none;
+    color: #FFFFFF; }
+
+.foo > li > a:hover {
+    color: #D0B99F; }
 
 
 
