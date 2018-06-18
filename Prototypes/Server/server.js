@@ -7,23 +7,23 @@
 // var url = '192.168.0.150'
 
 // Uni
-var url = '172.16.19.243'
+var url = '192.168.0.80'
 
 // SERVER //////////////////  
 
 // HTTPS for Web Bluetooth API
 var path = require('path')
 var fs = require('fs')
-var certOptions = {
-    key: fs.readFileSync(path.resolve('SSL/server.key')),
-    cert: fs.readFileSync(path.resolve('SSL/server.crt'))
-}
+// var certOptions = {
+//     key: fs.readFileSync(path.resolve('SSL/server.key')),
+//     cert: fs.readFileSync(path.resolve('SSL/server.crt'))
+// }
 
 // SERVER
 var express = require('express');
 var app = require('express')();
-var https = require('https').Server(certOptions,app);
-var io = require('socket.io')(https);
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/www' ));
 
@@ -51,6 +51,6 @@ io.on('connection', function(socket){
   });
 });
 
-https.listen(3000,url, function(){
+http.listen(3000,url, function(){
   console.log('listening on *:3000');
 });
