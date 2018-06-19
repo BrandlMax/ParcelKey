@@ -151,6 +151,16 @@ img{
 }
 
 
+.sectionGridBackimage12 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/love.svg");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    height:600px;
+}
+
+
 .sectionGrid {
     padding-top: 80px;
     padding-bottom: 80px;
