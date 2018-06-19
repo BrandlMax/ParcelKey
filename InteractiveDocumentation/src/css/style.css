@@ -132,6 +132,24 @@ img{
     height:600px;
 }
 
+.sectionGridBackimage10 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/herzchen.png");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    height:600px;
+}
+
+.sectionGridBackimage11 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/Charakter.svg");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    height:600px;
+}
+
 
 .sectionGrid {
     padding-top: 80px;
