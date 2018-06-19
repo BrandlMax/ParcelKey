@@ -97,6 +97,41 @@ img{
     height:600px;
 }
 
+.sectionGridBackimage6 {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      background-image: url("/src/img/hintergrundpackblue.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height:600px;
+  }
+.sectionGridBackimage7 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/technik.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+}
+
+.sectionGridBackimage8 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/SWOT.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:600px;
+}
+
+.sectionGridBackimage9 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-image: url("/src/img/LeanCanvas.svg");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    height:600px;
+}
+
 
 .sectionGrid {
     padding-top: 80px;
@@ -350,7 +385,6 @@ img{
 .foo > li {
     display: inline-block;
     padding: 10px 25px 25px 25px;
-    margin-top: 15px;
 }
 .foo > li > a {
     text-decoration: none;
