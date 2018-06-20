@@ -7,7 +7,7 @@
 // var url = '192.168.0.150'
 
 // Uni
-var url = '192.168.0.80'
+var url = '172.20.10.3'
 
 // SERVER //////////////////  
 
@@ -35,6 +35,10 @@ app.get('/shop', function(req, res){
     res.sendFile(__dirname + '/www/shop/');
 });
 
+io.use(function(socket, next){
+    console.log('query:', socket.handshake.query);
+})
+
 io.on('connection', function(socket){
   console.log('a user connected');
 
@@ -51,6 +55,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000,url, function(){
+http.listen(3000 ,url, function(){
   console.log('listening on *:3000');
 });
