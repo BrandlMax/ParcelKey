@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Amazon.de</h1>
-    <button onclick="scanBluetooth()">Connect Bluetooth</button>
+    <button onclick="buyWithParcelKey()">Connect Bluetooth</button>
 
     <script src="/shop/src/wsocket.js"></script>
     <script>
@@ -24,12 +24,18 @@
             socket.on('testchannel', function(msg){
                 console.log('testchannel: ' + msg);
             });
-            
         };
 
         connection.onerror = function (error) {
         console.log('WebSocket Error ' + error);
         };
+
+        function buyWithParcelKey(){
+            socket.emit('toParcelKey','New Buy');
+            socket.emit('toParcelKeyTracker','Max Mustermann');
+            socket.emit('testchannel','New Buy, dear Server');
+            console.log('send');
+        }
     </script>
 </body>
 </html>

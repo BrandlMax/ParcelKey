@@ -13,6 +13,11 @@ class wSocket{
     }
 
     emit(channel, data){
+        console.log(JSON.stringify({
+            channel: channel,
+            data: data,
+        }))
+
         this.ws.send(JSON.stringify({
             channel: channel,
             data: data,
