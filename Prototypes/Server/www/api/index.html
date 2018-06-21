@@ -9,27 +9,25 @@
 <body>
     <h1>ParcelKey API</h1>
 
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="./src/wsocket.js"></script>
     <script>
-        // Home
-        // var url = 'https://192.168.0.80:3000';
+        let connection = new WebSocket('ws://192.168.0.150:3001/', ['soap', 'xmpp']);
+        let socket;
 
-        // iMac
-        // var url = 'https://192.168.0.150:3000';
+        connection.onopen = function () {
+            socket = new wSocket(connection);
 
-        // Uni
-        // var url = 'http://192.168.0.80:3000';
+            socket.emit('testchannel','Hello from API');
 
-        // Uni 2
-        var url = 'https://172.16.19.243:3000';
+            socket.on('testchannel', function(msg){
+                console.log('testchannel: ' + msg);
+            });
+            
+        };
 
-        var socket = io(url);
-
-        socket.emit('testchannel','Hello from API');
-
-        socket.on('testchannel', function(msg){
-            console.log('testchannel: ' + msg);
-        });
+        connection.onerror = function (error) {
+        console.log('WebSocket Error ' + error);
+        };
     </script>
 </body>
 </html>

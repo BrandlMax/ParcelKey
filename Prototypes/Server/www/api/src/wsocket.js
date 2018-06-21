@@ -1,17 +1,15 @@
-// WebSocket Helper
-module.exports = class WSio{
+class wSocket{
     constructor(ws){
-        this.ws = ws;
+        this.ws = ws
     }
 
     on(channel, callback){
-        this.ws.on('message', function incoming(message) {
-            // console.log('received: %s', message);
-            message = JSON.parse(message);
+        this.ws.onmessage = function (e) {
+            let message = JSON.parse(e.data);
             if(message.channel == channel){
                 return callback(message.data)
             }
-        });
+        };
     }
 
     emit(channel, data){
@@ -20,5 +18,4 @@ module.exports = class WSio{
             data: data,
         }))
     }
-
 }
