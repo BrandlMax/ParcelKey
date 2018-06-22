@@ -104,23 +104,23 @@ function remainingtime() {
 function setup() {
   var canvas = createCanvas(900, 500);
   canvas.parent('minigame');
-  loadImage('img/hintergrund.jpg', (img) => {
+  loadImage('/src/img/hintergrund.jpg', (img) => {
     backgroundImage = img;
     imageLoaded();
   });
-  loadImage('img/hintergrundgreen.jpg', (img) => {
+  loadImage('/src/img/hintergrundgreen.jpg', (img) => {
     backgroundImageGreen = img;
     imageLoaded();
   });
-  loadImage('img/postcar.png', (img) => {
+  loadImage('/src/img/postcar.png', (img) => {
     postcarImage = img;
     imageLoaded();
   });
-  loadImage('img/autochen.png', (img) => {
+  loadImage('/src/img/autochen.png', (img) => {
     carImage = img;
     imageLoaded();
   });
-  loadImage('img/ParcelKey.png', (img) => {
+  loadImage('/src/img/ParcelKey.png', (img) => {
     parcelImage = img;
     imageLoaded();
   });
