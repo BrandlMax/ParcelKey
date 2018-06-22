@@ -2,14 +2,14 @@
 
 // NETWORK SETTINGS
 // Home
-var url = 'ws://192.168.0.150:3001'
+var url = 'http://192.168.0.150:3000'
 
 process.setMaxListeners(0);
 
 // IMPORTS
-let wSocket = require('./modules/wsocket')
-const WebSocket = require('ws');
 const ParcelKeyOS = require('./modules/parcelKeyOS');
+const io = require('socket.io-client');
+const socket = io(url);
 
 // INIT
 const OS = new ParcelKeyOS();
@@ -18,30 +18,13 @@ const OS = new ParcelKeyOS();
 OS.boot();
 
 // SOCKET SERVER
-const ws = new WebSocket(url);
-let socket;
+socket.emit('testchannel', 'Hello from ParcelKey');
 
-ws.on('open', function open() {
-
-    socket = new wSocket(ws);
-    console.log('connected');
-
-    socket.on('testchannel', function(msg){
-        console.log('testchannel: ' + msg);
-    });
-    
-    socket.on('toParcelKey', function(msg){
-        console.log('toParcelKey: ' + msg);
-        OS.e.emit('notification', msg);
-    });
-    
-    socket.emit('testchannel', 'Hello from RaspberryPi 3');
-    
+socket.on('testchannel', function(msg){
+    console.log('testchannel: ' + msg);
 });
 
-ws.on('close', function close() {
-    console.log('disconnected');
+socket.on('toParcelKey', function(msg){
+    console.log('toParcelKey: ' + msg);
+    OS.e.emit('notification', msg);
 });
-
-
-

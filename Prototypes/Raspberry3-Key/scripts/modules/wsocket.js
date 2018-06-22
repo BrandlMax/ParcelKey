@@ -4,14 +4,11 @@ module.exports = class WSio{
         this.ws = ws;
     }
 
-    on(channel, callback){
-        this.ws.on('message', function incoming(message) {
-            // console.log('received: %s', message);
+    on(channel, message, callback){
             message = JSON.parse(message);
             if(message.channel == channel){
                 return callback(message.data)
             }
-        });
     }
 
     emit(channel, data){

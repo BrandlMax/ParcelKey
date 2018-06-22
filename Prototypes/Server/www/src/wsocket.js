@@ -4,20 +4,15 @@ class wSocket{
     }
 
     on(channel, callback){
-        this.ws.onmessage = function (e) {
-            let message = JSON.parse(e.data);
+        connection.onmessage = function (msg) {
+            let message = JSON.parse(msg.data);
             if(message.channel == channel){
                 return callback(message.data)
             }
-        };
+        };    
     }
 
     emit(channel, data){
-        console.log(JSON.stringify({
-            channel: channel,
-            data: data,
-        }))
-
         this.ws.send(JSON.stringify({
             channel: channel,
             data: data,

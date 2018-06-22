@@ -31,9 +31,10 @@ def on_toParcelKeyTracker(data):
 
 # Events
 def on_message(ws, data):
+    print('msg',data)
     on("testchannel", data, on_testchannel)
     on("toParcelKeyTracker", data, on_toParcelKeyTracker)
-    
+
 def on_error(ws, error):
     print(error)
 
@@ -44,6 +45,8 @@ def on_open(ws):
     def run(*args):
         print("### open ###")
         emit(ws, "testchannel", "Hello From ParcelKeyTracker")
+        emit(ws, "toParcelKey", "Hello From ParcelKeyTracker")
+    
     thread.start_new_thread(run, ())
 
 

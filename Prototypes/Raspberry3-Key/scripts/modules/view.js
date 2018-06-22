@@ -154,7 +154,8 @@ module.exports = class View{
         this.needContiGyro = false;
 
         // OLED
-        this.UI.writeText(this.distanceData, 3);
+        let disdata = Number(this.distanceData).toFixed(2);
+        this.UI.writeText(disdata, 3);
         // LIGHT
         this.LIGHT.init();
 

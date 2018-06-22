@@ -9,25 +9,45 @@
 <body>
     <h1>ParcelKey API</h1>
 
-    <script src="./src/wsocket.js"></script>
+    <button onclick="sendToParcelKey()">Send to ParcelKey</button>
+    <button onclick="sendToTracker()">Send to ParcelKeyTracker</button>
+    <button onclick="sendToServer()">Send to Server</button>
+    <button onclick="sendToShop()">Send to Shop</button>
+
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-        let connection = new WebSocket('ws://192.168.0.150:3001/', ['soap', 'xmpp']);
-        let socket;
 
-        connection.onopen = function () {
-            socket = new wSocket(connection);
+        // SOCKET
+        let url = 'http://192.168.0.150:3000/';
+        let socket = io(url);
 
-            socket.emit('testchannel','Hello from API');
+        socket.emit('testchannel','Hello from API');
 
-            socket.on('testchannel', function(msg){
-                console.log('testchannel: ' + msg);
-            });
-            
-        };
+        socket.on('testchannel', function(data){
+            console.log('testchannel: ' + data);
+        });
 
-        connection.onerror = function (error) {
-        console.log('WebSocket Error ' + error);
-        };
+        socket.on('toAPI', function(data){
+            console.log('toAPI: ' + data);
+        });
+
+        // FUNCTIONS
+        function sendToParcelKey(){
+            socket.emit('toParcelKey','Later Hello ParcelKey from API');
+        }
+
+        function sendToTracker(){
+            socket.emit('toParcelKeyTracker','Later Hello Tracker from API');
+        }
+
+        function sendToServer(){
+            socket.emit('toServer','Later Hello from API');
+        }
+
+        function sendToShop(){
+            socket.emit('testchannel','Later Hello Shop from API');
+            socket.emit('toShop','Later Hello Shop from API');
+        }
     </script>
 </body>
 </html>

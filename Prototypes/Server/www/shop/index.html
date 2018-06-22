@@ -11,30 +11,29 @@
     <h1>Amazon.de</h1>
     <button onclick="buyWithParcelKey()">Connect Bluetooth</button>
 
-    <script src="/shop/src/wsocket.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-        let connection = new WebSocket('ws://192.168.0.150:3001/', ['soap', 'xmpp']);
-        let socket;
 
-        connection.onopen = function () {
-            socket = new wSocket(connection);
+        // SOCKET
+        let url = 'http://192.168.0.150:3000/';
+        let socket = io(url);
 
-            socket.emit('testchannel','Hello from Shop');
+        socket.emit('testchannel','Hello from Shop');
 
-            socket.on('testchannel', function(msg){
-                console.log('testchannel: ' + msg);
-            });
-        };
+        socket.on('testchannel', function(data){
+            console.log('testchannel: ' + data);
+        });
 
-        connection.onerror = function (error) {
-        console.log('WebSocket Error ' + error);
-        };
-
+        socket.on('toShop', function(data){
+            console.log('toShop: ' + data);
+        });
+        
+        // FUNCTIONS
         function buyWithParcelKey(){
             socket.emit('toParcelKey','New Buy');
+            socket.emit('toAPI','New Buy');
             socket.emit('toParcelKeyTracker','Max Mustermann');
             socket.emit('testchannel','New Buy, dear Server');
-            console.log('send');
         }
     </script>
 </body>

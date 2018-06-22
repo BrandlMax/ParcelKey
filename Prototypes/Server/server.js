@@ -27,6 +27,7 @@ Object.keys(ifaces).forEach(function (ifname) {
   });
 });
 
+url="192.168.0.150";
 
 // SERVER //////////////////  
 // HTTPS for Web Bluetooth API
@@ -52,32 +53,90 @@ app.get('/api', function(req, res){
     res.sendFile(__dirname + '/www/api/');
 });
 
+// SOCKETio SERVER
+var io = require('socket.io')(http);
 
-// SOCKET SERVER
+io.on('connection', function(socket){
+
+    console.log('a user connected');
+
+    socket.on('testchannel', function(msg){
+        console.log('testchannel: ' + msg);
+    });
+
+    socket.on('toParcelKey', function(msg){
+        socket.broadcast.emit('toParcelKey', msg);
+    });
+
+    socket.on('toParcelKeyTracker', function(msg){
+        socket.broadcast.emit('toParcelKeyTracker', msg);
+        wsocket.emit('toParcelKeyTracker', msg)
+    });
+
+    socket.on('toShop', function(msg){
+        socket.broadcast.emit('toShop', msg);
+    });
+
+    socket.on('toAPI', function(msg){
+        socket.broadcast.emit('toAPI', msg);
+    });
+
+    socket.on('toServer', function(msg){
+       console.log('toServer', msg);
+    });
+
+    socket.emit('testchannel','Hello @ all from Server');
+    socket.emit('toParcelKey','Hello ParcelKey from Server!');
+    socket.emit('toParcelKeyTracker','Hello ParcelKeyTracker from Server!');
+    socket.emit('toAPI','Hello API from Server!');
+    socket.emit('toShop','Hello Shop from Server!');
+      
+    socket.on('disconnect', function(){
+        console.log('user disconnected');
+    });
+
+});
+
+
+// WebSocket Server
 let wSocket = require('./modules/wsocket')
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 3001 });
+let wsocket = null;
 
 wss.on('connection', function connection(ws) {
-    socket = new wSocket(ws);
+    wsocket = new wSocket(ws);
 
     ws.on('open', function open() {
         console.log('a user connected');
     });
 
-    socket.on('testchannel', function(msg){
-        console.log('testchannel: ' + msg);
+    ws.on('message', function incoming(message) {
+        message = JSON.parse(message);
+
+        // Message from Tracker -> Redirection
+        switch (message.channel) {
+            case 'toParcelKey':
+                // Paket angenommen
+                msg = JSON.stringify({
+                    channel: 'toParcelKey',
+                    data: message.data,
+                });
+                io.sockets.emit('toParcelKey', msg.data)
+                break;
+        
+            default:
+                console.log('wSocket: ', message)
+                break;
+        }
     });
-    
-    socket.emit('testchannel','Hello from Server');
-    socket.emit('toParcelKey','Hello ParcelKey from Server!');
-    socket.emit('toParcelKeyTracker','Hello ParcelKeyTracker from Server!');
-      
+
     ws.on('close', function close() {
-          console.log('a user disconnected');
+        console.log('a user disconnected');
     });
-    
+
 });
+ 
 
 // START SERVER
 http.listen(3000 ,url, function(){
