@@ -1,0 +1,57 @@
+/* M˚ - Styleguide 2018 */
+/* WIP */
+
+body{
+    font-family: iA, monospace;
+}
+
+/* Font by iA based on IBM Plex */
+@font-face {
+    font-family: 'iA';
+    src: url('iAWriterDuospace-Regular.eot');
+    src: url('iAWriterDuospace-Regular.woff2') format('woff2'),
+         url('iAWriterDuospace-Regular.woff') format('woff'),
+         url('iAWriterDuospace-Regular.ttf') format('truetype'),
+         url('iAWriterDuospace-Regular.svg#iAWriterDuospace-Regular') format('svg'),
+         url('iAWriterDuospace-Regular.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'iA';
+    src: url('iAWriterDuospace-RegularItalic.eot');
+    src: url('iAWriterDuospace-RegularItalic.woff2') format('woff2'),
+         url('iAWriterDuospace-RegularItalic.woff') format('woff'),
+         url('iAWriterDuospace-RegularItalic.ttf') format('truetype'),
+         url('iAWriterDuospace-RegularItalic.svg#iAWriterDuospace-RegularItalic') format('svg'),
+         url('iAWriterDuospace-RegularItalic.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'iA';
+    src: url('iAWriterDuospace-Bold.eot');
+    src: url('iAWriterDuospace-Bold.woff2') format('woff2'),
+         url('iAWriterDuospace-Bold.woff') format('woff'),
+         url('iAWriterDuospace-Bold.ttf') format('truetype'),
+         url('iAWriterDuospace-Bold.svg#iAWriterDuospace-Bold') format('svg'),
+         url('iAWriterDuospace-Bold.eot?#iefix') format('embedded-opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+
+  @font-face {
+    font-family: 'iA';
+    src: url('iAWriterDuospace-BoldItalic.eot');
+    src: url('iAWriterDuospace-BoldItalic.woff2') format('woff2'),
+         url('iAWriterDuospace-BoldItalic.woff') format('woff'),
+         url('iAWriterDuospace-BoldItalic.ttf') format('truetype'),
+         url('iAWriterDuospace-BoldItalic.svg#iAWriterDuospace-BoldItalic') format('svg'),
+         url('iAWriterDuospace-BoldItalic.eot?#iefix') format('embedded-opentype');
+    font-weight: bold;
+    font-style: italic;
+  }
+  
