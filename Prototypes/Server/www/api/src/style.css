@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right bottom, #fff 50%, #0F30C9 50%);
+    height: 100vh;
+    width: 100vw;
+}
+
+img{
+    width: 100%;
+}
+
+.theBox {
+    background: url(./img/parcel.png);
+    height: 100vh;
+    width: 100vw;
+    background-size: 250vw;
+    background-position: -100vw -86vw;
+    position: absolute;
+    top: 0;
+}
+
+.parcelKeyTracker{
+    display: block;
+    margin-left: 43vw;
+    margin-top: 28.2vw;
+    /* background: rgba(239, 86, 153, 0.4); */
+    height: 21.9vw;
+    width: 31.7vw;
+    transform: perspective(0) rotateX(-29deg) rotateZ(0deg) rotateY(29deg);
+}
+
+.display {
+    font-size: 1vw;
+    margin-left: 3.4vw;
+    padding-top: 4vw;
+}
+
+img.displayTemplate {
+    position: absolute;
+    width: 17vw;
+    left: 3.1vw;
+    top: 3.2vw;
+}
+
+.dis {
+    position: absolute;
+    top: 7.2vw;
+    left: 17vw;
+}
+
+.time {
+    position: absolute;
+    top: 11vw;
+}
+
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 2.4vw;
+    top: 17.6vw;
+    padding: 0.4vw;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 400vw;
+    color: rgba(250, 235, 215, 0);
+    position: absolute;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}

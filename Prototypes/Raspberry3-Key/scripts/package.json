@@ -18,6 +18,8 @@
     "oled-font-5x7": "^1.0.1",
     "oled-i2c-bus": "^1.0.10",
     "pigpio": "^1.1.0",
+    "png-to-lcd": "^1.0.3",
+    "pngparse": "^2.0.1",
     "raspi-io": "^9.0.0",
     "socket.io": "^2.1.1",
     "ws": "^5.2.0"

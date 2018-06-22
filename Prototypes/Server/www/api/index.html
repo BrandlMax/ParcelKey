@@ -5,14 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ParcelKey API</title>
+
+    <link rel="stylesheet" href="./src/m/m.css">
+    <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
-    <h1>ParcelKey API</h1>
+    <h1>ParcelKey Tracker</h1>
 
-    <button onclick="sendToParcelKey()">Send to ParcelKey</button>
-    <button onclick="sendToTracker()">Send to ParcelKeyTracker</button>
-    <button onclick="sendToServer()">Send to Server</button>
-    <button onclick="sendToShop()">Send to Shop</button>
+
+    <div class="stage">
+        <div class="theBox">
+            <div class="parcelKeyTracker">
+                <div class="display">
+                    <div class="adress">
+                        <b>Max Mustermann</b> <br/>
+                        Musterstraße 23 <br/>
+                        12345 Musterstadt </br>
+                        <span id="number"></span>
+                    </div>
+                    <div class="dis"><span id="dis">1m</span></div>
+                    <div class="time"><span id="date">12.07.</span><br/><span id="time">12:30</span>Uhr</div>
+                    <img class="displayTemplate" src="./src/img/display.png">
+                </div>
+                <div class="btn" onclick="kontaktanfrage()">K</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <footer>
+        <button onclick="sendToParcelKey()">Send to ParcelKey</button>
+        <button onclick="sendToTracker()">Send to ParcelKeyTracker</button>
+        <button onclick="sendToServer()">Send to Server</button>
+        <button onclick="sendToShop()">Send to Shop</button>
+    </footer> -->
+
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -28,7 +54,23 @@
         });
 
         socket.on('toAPI', function(data){
+            // TODO: GET TIMESLOT
             console.log('toAPI: ' + data);
+
+            if(IsJsonString(data)){
+                data = JSON.parse(data)
+
+                document.getElementById('date').innerHTML = getDate();
+
+                document.getElementById('time').innerHTML = data.time.h + ':' + minFix(data.time.m);
+
+                let dis = Number(data.distance).toFixed(2)
+                document.getElementById('dis').innerHTML = dis + 'm';
+            }else{
+                if(data == 'Angenommen!'){
+                    document.getElementById('number').innerHTML = '0151 123 456 78';
+                }
+            }
         });
 
         // FUNCTIONS
@@ -48,6 +90,47 @@
             socket.emit('testchannel','Later Hello Shop from API');
             socket.emit('toShop','Later Hello Shop from API');
         }
+
+        function kontaktanfrage(){
+            socket.emit('toParcelKey','Kontaktanfrage!');
+        }
+
+        // https://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
+        function IsJsonString(str) {
+            try {
+                JSON.parse(str);
+            } catch (e) {
+                return false;
+            }
+            return true;
+        }
+
+        function minFix(m){
+            if(m < 10){
+                return '0' + m
+            }else{
+                return m
+            }
+        }
+
+        function getDate(){
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if(dd<10) {
+                dd = '0'+dd
+            } 
+
+            if(mm<10) {
+                mm = '0'+mm
+            } 
+
+            today = dd + '.' + mm;
+            return today;
+        }
+
     </script>
 </body>
 </html>

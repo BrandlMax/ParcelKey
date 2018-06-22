@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    width: 100%;
+}
+
+.stage{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 60px;
+}
+
+header{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.productImage{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding-left: 60px;
+}
+
+.productDescription{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+section.productDescription img {
+    width: 80%;
+}
+
+aside{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    padding-right: 60px;
+}
+
+.parcelKeyButton{
+    background-image: linear-gradient(-180deg, #2E4BC9 0%, #0F30C9 100%);
+    border: 1px solid #071966;
+    color: #fff;
+    border-radius: 3px;
+    height: 2.2vw;
+    text-align: center;
+    position: absolute;
+    margin-top: -6vw;
+    margin-left: 2.1vw;
+    width: 15.4vw;
+    cursor: pointer;
+}
+
+footer{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}

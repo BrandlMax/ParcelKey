@@ -1,6 +1,8 @@
 const i2c = require('i2c-bus');
 const oledi2c = require('oled-i2c-bus');
 const oledFont = require('oled-font-5x7');
+const pngparse = require('pngparse');
+var pngtolcd = require('png-to-lcd');
 
 module.exports = class UI{
     constructor(){
@@ -41,6 +43,25 @@ module.exports = class UI{
         this.oled.clearDisplay();
         this.oled.setCursor(1, 1);
         this.oled.writeString(oledFont, size, text, 1, true);
+    }
+
+
+    /**
+     * Write Image to LCD
+     * @param {String} path 
+     */
+    writeImg(path){
+        // this.oled.clearDisplay();
+        // pngparse.parseFile(path, (err, image) => {
+        //     console.log(path, image)
+        //     console.log('write Image Error:', err)
+        //     this.oled.drawBitmap(image.data);
+        // });
+        pngtolcd(path, false, (err, bitmap) => {
+            // console.log('write Image Error:', err, path)
+            this.oled.buffer = bitmap;
+            this.oled.update();
+        });
     }
 
     standBy(){

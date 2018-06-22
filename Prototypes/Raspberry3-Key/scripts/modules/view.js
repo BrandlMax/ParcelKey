@@ -22,6 +22,9 @@ module.exports = class View{
         this.needDistance = false;
         this.needContiGyro = false;
 
+        this.accepted = false;
+        this.ordered = false;
+
         // STATE STORAGE
         this.time = {
             h: 9,
@@ -81,6 +84,14 @@ module.exports = class View{
                 this.gyroState(action);
                 break;
 
+            case 'bestellung':
+                this.bestellung(action);
+                break;
+
+            case 'kontaktanfrage':
+                this.kontaktanfrage(action);
+                break;
+
             default:
                 break;
         }
@@ -92,7 +103,8 @@ module.exports = class View{
         this.needContiGyro = false;
 
         // OLED
-        this.UI.writeText('PARCELKEY', 2);
+        // this.UI.writeText('PARCELKEY', 2);
+        this.UI.writeImg('ParcelKey.png');
         // LIGHT
         this.LIGHT.init();
 
@@ -108,10 +120,10 @@ module.exports = class View{
 
         // CALCULATION
         let time = '0 Minuten'; 
-        if(this.distanceData < 3){
-            time = '1 Minute'  
+        if(this.distanceData < 5){
+            time = '1 Min'  
         } else {
-            time = '5 Minuten'
+            time = '5 Min'
         }
 
         // OLED
@@ -155,7 +167,7 @@ module.exports = class View{
 
         // OLED
         let disdata = Number(this.distanceData).toFixed(2);
-        this.UI.writeText(disdata, 3);
+        this.UI.writeText(disdata + 'm', 3);
         // LIGHT
         this.LIGHT.init();
 
@@ -194,7 +206,7 @@ module.exports = class View{
         this.needContiGyro = false;
 
         // OLED
-        this.UI.writeText('CHANGE TIMESLOT?', 3);
+        this.UI.writeText('CHANGE TIMESLOT?', 2);
         // LIGHT
         this.LIGHT.init();
 
@@ -234,7 +246,7 @@ module.exports = class View{
         this.needContiGyro = false;
 
         // Time
-        let time = this.time.h + ':' + this.time.m
+        let time = this.time.h + ':' + this.minFix(this.time.m)
 
         // OLED
         this.UI.writeText(time, 3);
@@ -251,7 +263,7 @@ module.exports = class View{
                         this.time.h -= 1;
                     }
 
-                    time = this.time.h + ':' + this.time.m
+                    time = this.time.h + ':' + this.minFix(this.time.m)
                     this.UI.writeText(time, 3);
                     break;
 
@@ -262,7 +274,7 @@ module.exports = class View{
                         this.time.h += 1;
                     }
 
-                    time = this.time.h + ':' + this.time.m
+                    time = this.time.h + ':' + this.minFix(this.time.m)
                     this.UI.writeText(time, 3);
                     break;
 
@@ -280,6 +292,73 @@ module.exports = class View{
                     // this.UI.writeText('NO ACTION', 2);
                     break;
             }
+        }
+    }
+
+    bestellung(action){
+        if(!this.ordered){
+            this.UI.writeImg('order.png');
+        }else{
+            this.UI.writeImg('check.png');
+        }
+        
+        setTimeout(()=>{
+           this.ordered = true;
+        }, 3000)
+        setTimeout(()=>{
+            this.STATE = 'statusState';
+            this.ordered = false;
+        }, 5000)
+    }
+
+    kontaktanfrage(action){
+        
+        if(!this.accepted){
+            this.UI.writeImg('contact.png');
+        }else{
+            this.UI.writeImg('check.png');
+        }
+
+        // Action
+        if(action != undefined){
+        switch (action) {
+            case 'left':
+                // this.UI.writeText('LEFT', 2);
+                break;
+
+            case 'right':
+                // this.UI.writeText('RIGHT', 2);
+                break;
+
+            case 'accept':
+                // this.UI.writeText('ACCEPT', 2);
+                this.accepted = true;
+                setTimeout(()=>{
+                    this.STATE = 'statusState';
+                    this.accepted = false;
+                }, 3000)
+                break;
+
+            case 'decline':
+                // this.UI.writeText('DECLINE', 2);
+                break;
+        
+            default:
+                // this.UI.writeText('NO ACTION', 2);
+                break;
+        }
+    }
+    }
+
+    // #### HELPERS ###
+
+
+
+    minFix(m){
+        if(m < 10){
+            return '0' + m
+        }else{
+            return m
         }
     }
 

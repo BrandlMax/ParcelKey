@@ -117,12 +117,7 @@ wss.on('connection', function connection(ws) {
         // Message from Tracker -> Redirection
         switch (message.channel) {
             case 'toParcelKey':
-                // Paket angenommen
-                msg = JSON.stringify({
-                    channel: 'toParcelKey',
-                    data: message.data,
-                });
-                io.sockets.emit('toParcelKey', msg.data)
+                io.sockets.emit('toParcelKey', message.data)
                 break;
         
             default:

@@ -13,6 +13,13 @@ module.exports = class pkOS{
 
         this.e.on('notification', (e)=>{
             console.log('notification', e);
+            if(e == 'Kontaktanfrage!'){
+                this.CONTROLLER.VIEW.STATE = 'kontaktanfrage';
+            }
+
+            if(e == 'New Delivery!'){
+                this.CONTROLLER.VIEW.STATE = 'bestellung';
+            }
         })
     }
 
