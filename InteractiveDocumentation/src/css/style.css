@@ -15,7 +15,6 @@ img{
 .nav {
     background-color: #FFFFFF;
     color: #ffffff;
-
     padding: 0 0 0 0;
     margin: 15px;
     margin-top: 0;
@@ -31,13 +30,13 @@ img{
     color: #000000;
     background: white;
 }
-}
+
 .nav > li > a {
     text-decoration: none;
-    color: #FFFFFF; }
+    color: #000000; }
 
 .nav > li > a:hover {
-    color: #D0B99F; }
+    color: #1539C6; }
 
 
 /* Section Grids */
@@ -144,7 +143,7 @@ img{
 .sectionGridBackimage11 {
     padding-top: 80px;
     padding-bottom: 80px;
-    background-image: url("/src/img/Charakter.svg");
+    background-image: url("/src/img/ParcelKeyCharakter.svg");
     background-repeat: no-repeat;
     background-size: 100vw;
     height:600px;
@@ -405,14 +404,13 @@ img{
     list-style: none;
     text-align: center;
     margin: auto;
-    top: 15px;
     height: 80px;
     padding: 0;
 }
 
 .foo > li {
     display: inline-block;
-    padding: 10px 25px 25px 25px;
+    padding: 25px 30px 25px 25px;
 }
 .foo > li > a {
     text-decoration: none;
@@ -430,3 +428,48 @@ img{
     }
 }
 
+.parcelkey-front {
+    position: relative;
+}
+
+.parcelkey-front.rotate-left {
+    transform: rotateZ(-30deg);
+}
+
+.parcelkey-front.rotate-right {
+    transform: rotateZ(30deg);
+}
+
+.parcelkey-front img {
+    user-select: none;
+}
+
+.parcelkey-front .pull-left,
+.parcelkey-front .pull-right {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+    cursor: -webkit-grab;
+}
+
+.parcelkey-front .pull-left {
+    position: absolute;
+    top: 6px;
+    left: 83px;
+}
+
+.parcelkey-front .pull-right {
+    position: absolute;
+    top: 6px;
+    right: 83px;
+}
+
+.parcelkey-front .count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -88%);
+    font-size: 4rem;
+    color: #020202;
+    user-select: none;
+}

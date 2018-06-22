@@ -15,7 +15,7 @@
 
    <div class="navbar">
        <ul class="nav">
-           <li>ParcelKey°</li>
+          <li><a href="index.html">ParcelKey°</a></li>
        </ul>
    </div>
 
@@ -42,9 +42,7 @@
                 Sitzen sie zu Hause und warten vergeblich auf die Bestellung?<br>
                     Ärgern sich weil die Zustellungen oft unzuverlässig und alles andere als transparent sind?  </p>
             </div>
-            <div class="minigame">
-                <img src="./src/img/p5placeholder.svg">
-            </div>
+            <div class="minigame" id="minigame"></div>
             <div class="ParcekKeyminigame">
                 <img src="./src/img/test.png">
             </div>
@@ -88,7 +86,10 @@
     <!--Fünfte Seite mit Uhr und Kalender Hintergrund-->
     <section class="sectionGridBackimage2 backgroundSection">
         <div class="contentGridTworows">
-            <div class="leftPic">
+            <div class="leftPic parcelkey-front">
+                <span class="pull-left"></span>
+                <span class="pull-right"></span>
+                <span class="count" data-count="10">10m</span>
                 <img src="./src/img/test.png">
             </div>
             <div class="rightText" style="margin-top: 170px;">
@@ -184,5 +185,9 @@
            </ul>
        </div>
    </footer>
+
+   <script src="./src/js/p5.min.js"></script>
+   <script src="./src/js/parcelkey-drag.js"></script>
+   <script src="./src/js/sketch.js"></script>
 </body>
 </html>
