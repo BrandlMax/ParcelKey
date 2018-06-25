@@ -1,16 +1,16 @@
 const maxSpeed = 0.3;
-let carOffset = 170;
-let traficLight = true;
-let traficLightPosition = 455;
-let draggingCar = false;
-let dragCarX = 260;
-let dragCarY = 40;
-let dragOffsetX = 0;
-let dragOffsetY = 0;
-let delivered = false;
+var carOffset = 170;
+var traficLight = true;
+var traficLightPosition = 455;
+var draggingCar = false;
+var dragCarX = 260;
+var dragCarY = 40;
+var dragOffsetX = 0;
+var dragOffsetY = 0;
+var delivered = false;
 
-let postcarImage = null;
-let carImage = null;
+var postcarImage = null;
+var carImage = null;
 
 class Car {
   constructor(posX) {
@@ -81,12 +81,12 @@ class Normalcar extends Car {
   }
 }
 
-let cars = [];
-let backgroundImage = null;
-let backgroundImageGreen = null;
-let parcelImage = null;
+var cars = [];
+var backgroundImage = null;
+var backgroundImageGreen = null;
+var parcelImage = null;
 
-let loading = 5;
+var loading = 5;
 
 function imageLoaded() {
   if (!(--loading)) {
@@ -102,7 +102,7 @@ function remainingtime() {
 }
 
 function setup() {
-  var canvas = createCanvas(900, 500);
+  var canvas = createCanvas(900, 400);
   canvas.parent('minigame');
   loadImage('/src/img/hintergrund.jpg', (img) => {
     backgroundImage = img;
@@ -141,8 +141,8 @@ function draw() {
     } else {
       tint(255, 200);
     }
-    let carX = dragCarX;
-    let carY = dragCarY;
+    var carX = dragCarX;
+    var carY = dragCarY;
     if (draggingCar) {
       carX = mouseX - dragOffsetX;
       carY = mouseY - dragOffsetY;
@@ -150,7 +150,7 @@ function draw() {
     image(carImage, carX, carY);
     noTint();
   }
-  let i = 1;
+  var i = 1;
   cars.forEach((car) => {
     car.drive(cars.length - i++);
   });
@@ -169,7 +169,7 @@ function draw() {
 }
 
 function addCar(x) {
-  let collides = false;
+  var collides = false;
   cars.forEach((car) => {
     if (car.collides(x - 10, 65)) {
       collides = true;
