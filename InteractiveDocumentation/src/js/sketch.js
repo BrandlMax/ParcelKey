@@ -21,6 +21,7 @@ class Car {
     this.width = 0;
     this.image = null;
     this.posY = 0;
+    this.stands = false;
   }
 
   draw() {
@@ -35,9 +36,12 @@ class Car {
       this.v = maxSpeed;
     }
     this.posX += this.v;
+    this.stands = false;
+
     const offsetBorder = traficLightPosition - offset * 90 - this.width - 10;
     if (this.posX > offsetBorder && !traficLight && !this.passedTraficLight) {
       this.posX -= this.v;
+      this.stands = true;
     } else if (this.posX > traficLightPosition && traficLight && !this.passedTraficLight) {
       this.passedTraficLight = true;
     }
@@ -94,16 +98,21 @@ function imageLoaded() {
   }
 }
 
+var timeRemaining = 0;
+
 function remainingtime() {
   if (cars.length > 0) {
-    return Math.floor((10 + (cars.length - 1) * 2 + (traficLight ? 0 : 5)) * (805 - cars[0].getPosX()) / 805);
+    // this.stands = true;
+    if (cars[0].stands === false) {
+      timeRemaining = Math.floor((10 * (900 - cars[0].getPosX()) / 900));
+    }
   }
-  return 0;
 }
 
 function setup() {
   var canvas = createCanvas(900, 400);
   canvas.parent('minigame');
+
   loadImage('/src/img/hintergrund.jpg', (img) => {
     backgroundImage = img;
     imageLoaded();
@@ -150,6 +159,7 @@ function draw() {
     image(carImage, carX, carY);
     noTint();
   }
+
   var i = 1;
   cars.forEach((car) => {
     car.drive(cars.length - i++);
@@ -163,13 +173,24 @@ function draw() {
       textAlign(CENTER);
       fill(0);
       textSize(50);
-      text(remainingtime(), 697.5, 290);
+      remainingtime();
+      text(timeRemaining, 697.5, 290);
     }
   }
 }
 
+function getFrontCarX() {
+    return cars.reduce((acc, car) => {
+      if (car.posX > acc) {
+        acc = car.posX;
+      }
+      return acc;
+    }, 0);
+}
+
 function addCar(x) {
   var collides = false;
+
   cars.forEach((car) => {
     if (car.collides(x - 10, 65)) {
       collides = true;
@@ -193,7 +214,8 @@ function mousePressed() {
 }
 
 function inDraggableArea() {
-  return draggingCar && cars.length > 0 && mouseX > cars[0].getPosX() + 90 && mouseY > 160 && mouseY < 210;
+  var frontCarX = getFrontCarX();
+  return draggingCar && cars.length > 0 && mouseX > cars[0].getPosX() + 90 && mouseY > 160 && mouseY < 210 && mouseX > frontCarX;
 }
 
 function mouseReleased() {
