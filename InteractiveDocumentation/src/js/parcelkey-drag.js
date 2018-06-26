@@ -5,14 +5,8 @@
     const $count = document.querySelector('.parcelkey-front .count');
 
     var positions = {
-        start: {
-            left: 0,
-            right: 0,
-        },
-        end: {
-            left: 0,
-            right: 0,
-        },
+        left: 0,
+        right: 0,
     };
 
     var dragging = {
@@ -21,12 +15,19 @@
     };
 
     var interval;
+    var img = document.createElement("img");
+    img.src = "http://kryogenix.org/images/hackergotchi-simpler.png";
 
     const handleLeftPull = function() {
         $parcelKey.classList.add('rotate-left');
         $parcelKey.classList.remove('rotate-right');
         var number = parseInt($count.getAttribute('data-count'), 10);
         number -= 1;
+
+        if (number <= 0) {
+            number = 0;
+        }
+
         $count.setAttribute('data-count', number);
         $count.textContent = number + 'm';
     };
@@ -41,50 +42,66 @@
     };
 
     const startDragInterval = function() {
-        if (dragging.left === true) {
-            interval = setInterval(handleLeftPull, 500);
-        } else if(dragging.right === true) {
-            interval = setInterval(handleRightPull, 500);
+        if (!interval) {
+            if (dragging.left === true) {
+                interval = setInterval(handleLeftPull, 500);
+            } else if(dragging.right === true) {
+                interval = setInterval(handleRightPull, 500);
+            }
         }
     };
 
     const stopDragInterval = function() {
         if (interval) {
             clearInterval(interval);
+            interval = undefined;
         }
     }
 
     const dragStartLeft = function(event) {
-        positions.start.left = event.screenY;
-        dragging.left = true;
-        startDragInterval();
+        event.dataTransfer.setDragImage(img, 0, 0);
     };
 
     const dragStartRight = function(event) {
-        var img = document.createElement("img");
-        img.src = "http://kryogenix.org/images/hackergotchi-simpler.png";
         event.dataTransfer.setDragImage(img, 0, 0);
-        positions.start.right = event.screenY;
-        dragging.right = true;
-        startDragInterval();
+    };
+
+    const dragLeft = function(event) {
+        if (!positions.left) {
+            positions.left = event.screenY;
+        } else if (event.screenY > positions.left) {
+            dragging.left = true;
+            startDragInterval();
+        }
+    };
+
+    const dragRight = function(event) {
+        if (!positions.right) {
+            positions.right = event.screenY;
+        } else if (event.screenY > positions.right) {
+            dragging.right = true;
+            startDragInterval();
+        }
     };
 
     const dragEndLeft = function(event) {
-        positions.end.left = event.screenY;
         dragging.left = false;
+        positions.left = 0;
         stopDragInterval();
         $parcelKey.classList.remove('rotate-left');
     };
 
     const dragEndRight = function(event) {
-        positions.end.right = event.screenY;
         dragging.right = false;
+        positions.right = 0;
         stopDragInterval();
         $parcelKey.classList.remove('rotate-right');
     };
 
     $dragLeft.addEventListener('dragstart', dragStartLeft);
     $dragRight.addEventListener('dragstart', dragStartRight);
+    $dragLeft.addEventListener('drag', dragLeft);
+    $dragRight.addEventListener('drag', dragRight);
     $dragLeft.addEventListener('dragend', dragEndLeft);
     $dragRight.addEventListener('dragend', dragEndRight);
 })();
