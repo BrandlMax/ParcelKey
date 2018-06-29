@@ -35,8 +35,13 @@ module.exports = class View{
     boot(){
         this.updateDisplay();
 
+        // Continous Time Setting
+        // setInterval(() => {
+        //     if(this.old_action ==){}
+        //     this.old_action = null
+        // },250)
+
         this.e.on('newGesture',(action)=>{
-            
             if(this.old_action != action){
                 console.log(action)
                 this.updateDisplay(action);

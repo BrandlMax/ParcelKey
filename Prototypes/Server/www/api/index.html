@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="./src/m/m.css">
     <link rel="stylesheet" href="./src/style.css">
 </head>
+
 <body>
     <h1>ParcelKey Tracker</h1>
 
@@ -18,13 +20,18 @@
             <div class="parcelKeyTracker">
                 <div class="display">
                     <div class="adress">
-                        <b>Max Mustermann</b> <br/>
-                        Musterstraße 23 <br/>
-                        12345 Musterstadt </br>
+                        <b>Max Mustermann</b>
+                        <br/> Musterstraße 23
+                        <br/> 12345 Musterstadt </br>
                         <span id="number"></span>
                     </div>
-                    <div class="dis"><span id="dis">1m</span></div>
-                    <div class="time"><span id="date">12.07.</span><br/><span id="time">12:30</span>Uhr</div>
+                    <div class="dis">
+                        <span id="dis">1m</span>
+                    </div>
+                    <div class="time">
+                        <span id="date">12.07.</span>
+                        <br/>
+                        <span id="time">12:30</span>Uhr</div>
                     <img class="displayTemplate" src="./src/img/display.png">
                 </div>
                 <div class="btn" onclick="kontaktanfrage()">K</div>
@@ -42,22 +49,21 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-
         // SOCKET
-        let url = 'http://192.168.0.150:3000/';
+        let url = window.location.origin;
         let socket = io(url);
 
-        socket.emit('testchannel','Hello from API');
+        socket.emit('testchannel', 'Hello from API');
 
-        socket.on('testchannel', function(data){
+        socket.on('testchannel', function (data) {
             console.log('testchannel: ' + data);
         });
 
-        socket.on('toAPI', function(data){
+        socket.on('toAPI', function (data) {
             // TODO: GET TIMESLOT
             console.log('toAPI: ' + data);
 
-            if(IsJsonString(data)){
+            if (IsJsonString(data)) {
                 data = JSON.parse(data)
 
                 document.getElementById('date').innerHTML = getDate();
@@ -66,33 +72,34 @@
 
                 let dis = Number(data.distance).toFixed(2)
                 document.getElementById('dis').innerHTML = dis + 'm';
-            }else{
-                if(data == 'Angenommen!'){
+            } else {
+                if (data == 'Angenommen!') {
                     document.getElementById('number').innerHTML = '0151 123 456 78';
                 }
             }
         });
 
         // FUNCTIONS
-        function sendToParcelKey(){
-            socket.emit('toParcelKey','Later Hello ParcelKey from API');
+        function sendToParcelKey() {
+            socket.emit('toParcelKey', 'Later Hello ParcelKey from API');
         }
 
-        function sendToTracker(){
-            socket.emit('toParcelKeyTracker','Later Hello Tracker from API');
+        function sendToTracker() {
+            socket.emit('toParcelKeyTracker', 'Later Hello Tracker from API');
         }
 
-        function sendToServer(){
-            socket.emit('toServer','Later Hello from API');
+        function sendToServer() {
+            socket.emit('toServer', 'Later Hello from API');
         }
 
-        function sendToShop(){
-            socket.emit('testchannel','Later Hello Shop from API');
-            socket.emit('toShop','Later Hello Shop from API');
+        function sendToShop() {
+            socket.emit('testchannel', 'Later Hello Shop from API');
+            socket.emit('toShop', 'Later Hello Shop from API');
         }
 
-        function kontaktanfrage(){
-            socket.emit('toParcelKey','Kontaktanfrage!');
+        function kontaktanfrage() {
+            socket.emit('toParcelKey', 'Kontaktanfrage!');
+            console.log('Kontaktanfrage gesendet!');
         }
 
         // https://stackoverflow.com/questions/3710204/how-to-check-if-a-string-is-a-valid-json-string-in-javascript-without-using-try/3710226
@@ -105,32 +112,32 @@
             return true;
         }
 
-        function minFix(m){
-            if(m < 10){
+        function minFix(m) {
+            if (m < 10) {
                 return '0' + m
-            }else{
+            } else {
                 return m
             }
         }
 
-        function getDate(){
+        function getDate() {
             var today = new Date();
             var dd = today.getDate();
-            var mm = today.getMonth()+1; //January is 0!
+            var mm = today.getMonth() + 1; //January is 0!
             var yyyy = today.getFullYear();
 
-            if(dd<10) {
-                dd = '0'+dd
-            } 
+            if (dd < 10) {
+                dd = '0' + dd
+            }
 
-            if(mm<10) {
-                mm = '0'+mm
-            } 
+            if (mm < 10) {
+                mm = '0' + mm
+            }
 
             today = dd + '.' + mm;
             return today;
         }
-
     </script>
 </body>
+
 </html>

@@ -2,7 +2,7 @@
 
 // NETWORK SETTINGS
 // Home
-var url = 'http://192.168.0.150:3000'
+var url = 'http://172.20.10.3:3000'
 
 process.setMaxListeners(0);
 

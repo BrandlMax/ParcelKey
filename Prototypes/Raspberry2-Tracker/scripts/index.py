@@ -6,7 +6,7 @@ from multiprocessing import Process
 import epd2in7
 from PIL import Image, ImageFont, ImageDraw
 
-def main():
+def displayInit():
     print("Init Display")
     epd = epd2in7.EPD()
     epd.init()
@@ -49,13 +49,14 @@ import SimpleMFRC522
 def scanRFID():
     print("RFID READING")
     reader = SimpleMFRC522.SimpleMFRC522()
-    try:
+
+    while True:
         id, text = reader.read()
         print(id)
         print(text)
-    finally:
-        GPIO.cleanup()
-        scanRFID()
+        # finally:
+            # GPIO.cleanup()
+            # scanRFID()
 
 
 # try:
@@ -71,12 +72,10 @@ def scanRFID():
 import json
 import websocket
 
-url = "ws://192.168.0.150:3001/"
+url = "ws://172.20.10.3:3001/"
 
-try:
-    import thread
-except ImportError:
-    import _thread as thread
+import threading
+
 import time
 
 def emit(ws, channel, data):
@@ -100,6 +99,7 @@ def on_toParcelKeyTracker(data):
 # Events
 def on_message(ws, data):
     # print('msg',data)
+    displayInit()
     on("testchannel", data, on_testchannel)
     on("toParcelKeyTracker", data, on_toParcelKeyTracker)
 
@@ -110,13 +110,19 @@ def on_close(ws):
     print("### closed ###")
 
 def on_open(ws):
+    displayInit()
     def run(*args):
         print("### open ###")
         emit(ws, "testchannel", "Hello From ParcelKeyTracker")
         emit(ws, "toParcelKey", "Hello From ParcelKeyTracker")
-        main()
     
-    thread.start_new_thread(run, ())
+    wsThread = threading.Thread(name="websocket", target=run)
+    wsThread.start()
+    print('ThreadCompleted')
+
+    rfidThread = threading.Thread(name="rfid", target=scanRFID)
+    rfidThread.start()
+
 
 
 if __name__ == "__main__":
