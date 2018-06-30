@@ -50,10 +50,13 @@ aside{
     height: 2.2vw;
     text-align: center;
     position: absolute;
-    margin-top: -6vw;
-    margin-left: 2.1vw;
+/*    margin-top: -6vw;
+    margin-left: 2.1vw;*/
     width: 15.4vw;
     cursor: pointer;
+    margin-top: 21vw;
+    margin-left: -17.9vw;
+    width: 15.6vw;
 }
 
 footer{

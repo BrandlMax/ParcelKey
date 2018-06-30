@@ -27,7 +27,7 @@ Object.keys(ifaces).forEach(function (ifname) {
   });
 });
 
-url="192.168.0.150";
+url="172.16.65.10";
 
 // SERVER //////////////////  
 // HTTPS for Web Bluetooth API
