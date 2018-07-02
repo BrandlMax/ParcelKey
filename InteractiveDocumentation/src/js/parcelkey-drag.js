@@ -1,8 +1,10 @@
-(function() {
+(function($) {
     const $parcelKey = document.querySelector('.parcelkey-front');
     const $dragLeft = document.querySelector('.parcelkey-front .pull-left');
     const $dragRight = document.querySelector('.parcelkey-front .pull-right');
     const $count = document.querySelector('.parcelkey-front .count');
+    const $fickdichmaxbox = document.getElementById('fickdichmaxbox');
+    const $fickdichmaxslider = document.getElementById('fickdichmaxslider');
 
     var positions = {
         left: 0,
@@ -98,10 +100,15 @@
         $parcelKey.classList.remove('rotate-right');
     };
 
+    const rotateKey = function(event) {
+        $fickdichmaxbox.style.transform = 'rotateZ('+event.target.value+'deg)';
+    };
+
     $dragLeft.addEventListener('dragstart', dragStartLeft);
     $dragRight.addEventListener('dragstart', dragStartRight);
     $dragLeft.addEventListener('drag', dragLeft);
     $dragRight.addEventListener('drag', dragRight);
     $dragLeft.addEventListener('dragend', dragEndLeft);
     $dragRight.addEventListener('dragend', dragEndRight);
+    $fickdichmaxslider.addEventListener('input', rotateKey);
 })();
