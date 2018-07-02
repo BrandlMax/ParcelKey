@@ -1,0 +1,181 @@
+/* PARCEL KEY CSS */
+
+/* * {
+    box-sizing: border-box;
+} */
+
+.animationImage {
+    position: -webkit-sticky;
+    position: sticky;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 195px;
+    height: auto;
+    cursor: pointer;
+}
+
+.box {
+    height: 170px;
+    width: 170px;
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    position: relative;
+    padding: 10px;
+    color: #fff;
+    font-size: 18pt;
+    background: -webkit-gradient(linear, left top, left bottom, from(#e8e8e8), to(#e7e7e7));
+    background: linear-gradient(#e8e8e8, #e7e7e7);
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #d6d6d64f;
+    border-top: 1px solid #eaeaea;
+    -webkit-box-shadow: 0px 0px 2px #e7e7e7;
+            box-shadow: 0px 0px 2px #e7e7e7;
+    z-index: 1;
+}
+
+.shadow {
+    content: "";
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    height: 1px;
+    background-color: black;
+    border-radius: 50%;
+    -webkit-transform: rotateX(80deg);
+            transform: rotateX(80deg);
+    -webkit-box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 1);
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 1);
+    z-index: -1;
+}
+
+
+/* DISPLAY */
+
+.display{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+    width: 100%;
+    -webkit-filter: blur(0.9px);
+            filter: blur(0.9px);
+    text-shadow: 0px 0px 2px;
+}
+
+.display.time{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+.display.time .num{
+    font-size: 80px;
+}
+
+.display.time .subtext{
+    font-size: 22px;
+}
+
+/* GLOW */
+
+.box-glow{
+    background: #29c530;
+    height: 220px;
+    width: 200px;
+    border-radius: 900px;
+    position: absolute;
+    top: -20px;
+    display: block;
+    -webkit-filter: blur(50px);
+            filter: blur(50px);
+    mix-blend-mode: color-burn;
+    opacity: 0.7;
+    z-index: 1;
+}
+
+.ambient-glow{
+    /* background: #29c530;
+    height: 220px;
+    width: 200px;
+    border-radius: 900px;
+    position: absolute;
+    top: -20px;
+    display: block;
+    filter: blur(50px);
+    mix-blend-mode: color;  */
+}
+
+.box-glow.blue{
+    background: #2740a2;
+    opacity: 1;
+}
+
+.box-glow.red{
+    background: #b42020;
+    opacity: 1;
+}
+
+/* HOVER OVER GROUND */
+
+.box.boxhover{
+    -webkit-transform: rotate(350deg) translateY(-50px);
+            transform: rotate(350deg) translateY(-50px);
+}
+
+.shadow.boxhover{
+    opacity: 0.5;
+}
+
+.box-glow.boxhover{
+    -webkit-transform: rotate(350deg) translateY(-50px);
+            transform: rotate(350deg) translateY(-50px);
+}
+
+
+/* BROWSER FIXES */
+@-moz-document url-prefix() {
+    .box-glow{
+        mix-blend-mode: color;
+        background: #80e367;
+    }
+
+    .box-glow.blue{
+        background: #3456db;
+        mix-blend-mode: color-burn;
+    }
+
+    .box-glow.red{
+        background: #db3434;
+        mix-blend-mode: color-burn;
+    }
+}
+
+
+/* Animations */
+
+.hovering{
+    animation: floatingBox 6s ease-in-out infinite;
+}
+
+@keyframes floatingBox {
+	0% {
+		transform: rotate(350deg) translatey(-30px);
+	}
+	50% {
+		transform: rotate(350deg) translatey(-70px);
+	}
+	100% {
+		transform: rotate(350deg) translatey(-30px);
+	}
+}
