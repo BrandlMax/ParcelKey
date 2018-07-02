@@ -21,6 +21,7 @@ module.exports = class View{
         // STATE OPTIONS
         this.needDistance = false;
         this.needContiGyro = false;
+        this.needContiAction = false;
 
         this.accepted = false;
         this.ordered = false;
@@ -35,9 +36,27 @@ module.exports = class View{
     boot(){
         this.updateDisplay();
 
+        // setInterval(()=>{
+        //     this.updateDisplay();
+        // }, 250);
+
         this.e.on('newGesture',(action)=>{
-            
-            if(this.old_action != action){
+
+            let trackGesture = false;
+            // Continous Mode
+            if(this.needContiAction){
+                if(action == 'left' || action == 'right'){
+                    trackGesture = true
+                }else{
+                    trackGesture = this.old_action != action;
+                }
+            }else{
+                trackGesture = this.old_action != action;
+            }
+    
+
+            if(trackGesture){
+                console.log('trackGesture', trackGesture);
                 console.log(action)
                 this.updateDisplay(action);
                 this.old_action = action;
@@ -109,7 +128,10 @@ module.exports = class View{
         this.LIGHT.init();
 
         // START STATE
-        this.STATE = 'statusState'
+        setTimeout(()=>{
+            this.STATE = 'statusState'
+            this.updateDisplay();
+        }, 3000)
     }
 
 
@@ -227,6 +249,7 @@ module.exports = class View{
                 case 'accept':
                     // this.UI.writeText('ACCEPT', 2);
                     this.STATE = 'changeTimeState';
+                    this.updateDisplay();
                     break;
 
                 case 'decline':
@@ -244,12 +267,19 @@ module.exports = class View{
         // STATE Settings
         this.needDistance = false;
         this.needContiGyro = false;
+        this.needContiAction = true;
 
         // Time
         let time = this.time.h + ':' + this.minFix(this.time.m)
 
         // OLED
-        this.UI.writeText(time, 3);
+        if(this.needContiAction){
+            this.UI.writeText(time, 3);
+        }else{
+            this.UI.writeImg('check.png');
+        }
+        
+        
         // LIGHT
         this.LIGHT.init();
 
@@ -280,7 +310,13 @@ module.exports = class View{
 
                 case 'accept':
                     // this.UI.writeText('ACCEPT', 2);
-                    this.STATE = 'statusState';
+                    this.UI.writeImg('check.png');
+                    this.needContiAction = false;
+                    setTimeout(()=>{
+                        this.STATE = 'statusState';
+                        this.updateDisplay();
+                    }, 3000)
+ 
                     break;
 
                 case 'decline':
@@ -315,9 +351,12 @@ module.exports = class View{
         
         if(!this.accepted){
             this.UI.writeImg('contact.png');
+            this.LIGHT.problem();
         }else{
             this.UI.writeImg('check.png');
+            this.LIGHT.ok();
         }
+        
 
         // Action
         if(action != undefined){
@@ -334,8 +373,8 @@ module.exports = class View{
                 // this.UI.writeText('ACCEPT', 2);
                 this.accepted = true;
                 setTimeout(()=>{
-                    this.STATE = 'statusState';
                     this.accepted = false;
+                    this.STATE = 'statusState';
                 }, 3000)
                 break;
 

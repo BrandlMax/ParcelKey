@@ -2,7 +2,13 @@
 
 // NETWORK SETTINGS
 // Home
-var url = 'http://192.168.0.150:3000'
+const fs = require('fs');
+const path = require('path');
+
+const configJSON = fs.readFileSync(path.resolve(__dirname, '_CONFIG.json'));
+const configOBJ = JSON.parse(configJSON);
+
+let url = 'http://' + configOBJ.serverIpAdress + ':3000';
 
 process.setMaxListeners(0);
 
@@ -20,21 +26,24 @@ OS.boot();
 // SOCKET SERVER
 socket.emit('testchannel', 'Hello from ParcelKey');
 
-socket.on('testchannel', function(msg){
+socket.on('testchannel', function (msg) {
     console.log('testchannel: ' + msg);
 });
 
-socket.on('toParcelKey', function(msg){
-    // console.log('toParcelKey: ' + msg);
+socket.on('toParcelKey', function (msg) {
+    console.log('toParcelKey: ' + msg);
     OS.e.emit('notification', msg);
-    if(msg == 'Kontaktanfrage!'){
-        setTimeout(()=>{
+
+    // Dirty Response: 
+    // ToDo: Get Answer from User Interaction
+    if (msg == 'Kontaktanfrage!') {
+        setTimeout(() => {
             socket.emit('toAPI', 'Angenommen!');
         }, 9000)
     }
 });
 
-setInterval(()=>{
+setInterval(() => {
     // console.log(OS.CONTROLLER.MODEL.DISTANCE);
     let data = {
         distance: OS.CONTROLLER.MODEL.DISTANCE,
