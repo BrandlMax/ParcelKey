@@ -7,7 +7,67 @@ $('#erinnerungBox').click(() => {
 
 
 // ############# Ihre Erinnerung
-// Erinnerungsbox Hover to Countdown
+// Erinnerungsbox
+const $erinnerungsBox = $('#erinnerungBox');
+const $erinnerungsBoxNum = $erinnerungsBox.find('.num');
+const $erinnerungsBoxSub = $erinnerungsBox.find('.subtext');
+const erinnerungsBoxData = {
+    nums: JSON.parse($erinnerungsBox.attr('data-nums')),
+    subs: JSON.parse($erinnerungsBox.attr('data-subs').replace(/'/g, '"')),
+};
+let erinnerungsBoxInterval = null;
+
+const isInViewPort = function(element) {
+    if (!element) {
+        return false;
+    }
+
+    if (!element.getBoundingClientRect) {
+        element = element.get(0);
+    }
+
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0
+        && rect.left >= 0
+        && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        && rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
+
+const startErinnerungsBox = function() {
+    $erinnerungsBox.addClass('glow');
+
+    setTimeout(function() {
+        $erinnerungsBox.removeClass('glow');
+    }, 2500);
+
+    const currentIndex = erinnerungsBoxData.nums.indexOf(parseInt($erinnerungsBoxNum.html(), 10));
+
+    if (currentIndex === -1) {
+        $erinnerungsBoxNum.html(erinnerungsBoxData.nums[0]);
+        $erinnerungsBoxSub.html(erinnerungsBoxData.subs[0]);
+    } else {
+        const nextIndex = currentIndex === erinnerungsBoxData.nums.length - 1
+            ? 0
+            : currentIndex + 1;
+
+        $erinnerungsBoxNum.html(erinnerungsBoxData.nums[nextIndex]);
+        $erinnerungsBoxSub.html(erinnerungsBoxData.subs[nextIndex]);
+    }
+
+    if (!erinnerungsBoxInterval) {
+        erinnerungsBoxInterval = setInterval(startErinnerungsBox, 3500);
+    }
+};
+
+$(window).on('scroll', function() {
+    if (isInViewPort($erinnerungsBox) && !erinnerungsBoxInterval) {
+        startErinnerungsBox();
+    }
+});
+
+/*
 let howLongBox = document.getElementById('howLongBox');
 let howLongBoxNum = document.getElementById('howLongBoxNum');
 let howLongBoxSub = document.getElementById('howLongBoxSub');
@@ -43,7 +103,7 @@ $('#erinnerungBox').click(() => {
     }
 
 })
-
+*/
 
 // ############# Ihre Zeit
 
