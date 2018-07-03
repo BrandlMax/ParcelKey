@@ -87,6 +87,28 @@
     font-size: 22px;
 }
 
+.display.clock{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+.display.init{
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+
+.clock .num {
+    font-size: 47px;
+}
+
+.clock .subtext {
+    font-size: 22px;
+}
+
 /* GLOW */
 
 .box-glow{
@@ -150,6 +172,33 @@
     opacity: 1;
 }
 
+
+#ihreZeitBoxOnly .num{
+    opacity: 1;
+}
+
+#ihreZeitBoxOnly .subtext{
+    opacity: 1;
+}
+
+
+#ReasonBox .num{
+    opacity: 1;
+}
+
+#ReasonBox .subtext{
+    opacity: 1;
+}
+
+div#ReasonBoxNum {
+    font-size: 60px;
+}
+
+.selectTarget {
+    margin-top: 40px;
+}
+
+
 /* HOVER OVER GROUND */
 
 .box.boxhover{
@@ -164,6 +213,31 @@
 .box-glow.boxhover{
     -webkit-transform: rotate(350deg) translateY(-50px);
             transform: rotate(350deg) translateY(-50px);
+}
+
+.display.init img {
+    width: 70px;
+    transition: all 1s;
+}
+
+.selectTarget {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.selectTarget div {
+    margin-left: 20px;
+}
+
+#targetBox{
+    margin: 0 auto;
+}
+
+.selectTarget div input {
+    margin-right: 6px;
 }
 
 
@@ -214,12 +288,45 @@
     transition: opacity .3s;
 }
 
+.num {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.subtext {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+
 .glow .box-glow {
     animation: glow 2.5s linear;
 }
 
+.glowStatic .box-glow{
+    animation: glow 2.5s linear infinite;
+}
+
+.glowStaticRed .box-glow{
+    background: #c52929;
+    animation: glow 2.5s linear infinite;
+}
+
+.glowStaticBlue .box-glow{
+    background: #2740a2;
+    animation: glow 2.5s linear infinite;
+}
+
 #erinnerungBox.glow .num,
 #erinnerungBox.glow .subtext {
+    opacity: 1;
+}
+
+.glow .num {
+    opacity: 1;
+}
+
+.glow .subtext {
     opacity: 1;
 }
 

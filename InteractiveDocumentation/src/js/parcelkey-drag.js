@@ -1,54 +1,199 @@
-(function($) {
+
     const $parcelKey = document.querySelector('.parcelkey-front');
     const $dragLeft = document.querySelector('.parcelkey-front .pull-left');
     const $dragRight = document.querySelector('.parcelkey-front .pull-right');
     const $count = document.querySelector('.parcelkey-front .count');
-    const $fickdichmaxbox = document.getElementById('fickdichmaxbox');
-    const $fickdichmaxslider = document.getElementById('fickdichmaxslider');
+    const $ihreZeitBoxSliderJS = document.getElementById('ihreZeitBoxSlider')
+    const $ihreZeitBoxOnlyShadowJS = document.getElementById('ihreZeitBoxOnlyShadow')
+    
+    const $ihreZeitBoxJS = document.getElementById('ihreZeitBoxOnly')
+    const $ihreZeitBox = $('#ihreZeitBoxOnly');
+    const $ihreZeitBoxForGlow = $('#ihreZeitBox');
+    const $ihreZeitBoxSlider = $('#ihreZeitBoxSlider');
+    const $ihreZeitBoxNum = $ihreZeitBox.find('.num');
+    const $ihreZeitBoxSub = $ihreZeitBox.find('.subtext');
 
-    var positions = {
-        left: 0,
-        right: 0,
+    var date = new Date;
+    var seconds = date.getSeconds();
+    var minutes = parseInt(date.getMinutes().toString()[0]+'0');
+    var hours = parseInt(date.getHours().toString());
+
+    // var positions = {
+    //     left: 0,
+    //     right: 0,
+    // };
+
+    // var dragging = {
+    //     left: false,
+    //     right: false,
+    // };
+
+    // var interval;
+
+    // const handleLeftPull = function() {
+    //     $parcelKey.classList.add('rotate-left');
+    //     $parcelKey.classList.remove('rotate-right');
+    //     var number = parseInt($count.getAttribute('data-count'), 10);
+    //     number -= 1;
+
+    //     if (number <= 0) {
+    //         number = 0;
+    //     }
+
+    //     $count.setAttribute('data-count', number);
+    //     $count.textContent = number + 'm';
+    // };
+
+    // const handleRightPull = function() {
+    //     $parcelKey.classList.add('rotate-right');
+    //     $parcelKey.classList.remove('rotate-left');
+    //     var number = parseInt($count.getAttribute('data-count'), 10);
+    //     number += 1;
+    //     $count.setAttribute('data-count', number);
+    //     $count.textContent = number + 'm';
+    // };
+
+    // const startDragInterval = function() {
+    //     if (!interval) {
+    //         if (dragging.left === true) {
+    //             interval = setInterval(handleLeftPull, 500);
+    //         } else if(dragging.right === true) {
+    //             interval = setInterval(handleRightPull, 500);
+    //         }
+    //     }
+    // };
+
+    // const stopDragInterval = function() {
+    //     if (interval) {
+    //         clearInterval(interval);
+    //         interval = undefined;
+    //     }
+    // }
+
+    // // const dragStartLeft = function(event) {
+    // //     event.dataTransfer.setDragImage(img, 0, 0);
+    // // };
+
+    // // const dragStartRight = function(event) {
+    // //     event.dataTransfer.setDragImage(img, 0, 0);
+    // // };
+
+    // const dragLeft = function(event) {
+    //     if (!positions.left) {
+    //         positions.left = event.screenY;
+    //     } else if (event.screenY > positions.left) {
+    //         dragging.left = true;
+    //         startDragInterval();
+    //     }
+    // };
+
+    // const dragRight = function(event) {
+    //     if (!positions.right) {
+    //         positions.right = event.screenY;
+    //     } else if (event.screenY > positions.right) {
+    //         dragging.right = true;
+    //         startDragInterval();
+    //     }
+    // };
+
+    // const dragEndLeft = function(event) {
+    //     dragging.left = false;
+    //     positions.left = 0;
+    //     stopDragInterval();
+    //     $parcelKey.classList.remove('rotate-left');
+    // };
+
+    // const dragEndRight = function(event) {
+    //     dragging.right = false;
+    //     positions.right = 0;
+    //     stopDragInterval();
+    //     $parcelKey.classList.remove('rotate-right');
+    // };
+
+    let interval;
+    this.time = {
+        h: hours,
+        m: minutes
     };
+    let clock;
 
-    var dragging = {
-        left: false,
-        right: false,
-    };
-
-    var interval;
-    var img = document.createElement("img");
-    img.src = "http://kryogenix.org/images/hackergotchi-simpler.png";
-
-    const handleLeftPull = function() {
-        $parcelKey.classList.add('rotate-left');
-        $parcelKey.classList.remove('rotate-right');
-        var number = parseInt($count.getAttribute('data-count'), 10);
-        number -= 1;
-
-        if (number <= 0) {
-            number = 0;
+    const minFix = function(m){
+        if(m < 10){
+            return '0' + m
+        }else{
+            return m
         }
+    }
 
-        $count.setAttribute('data-count', number);
-        $count.textContent = number + 'm';
-    };
+    clock = time.h + ':' + minFix(time.m)
+    // console.log('Clock', clock)
+    $ihreZeitBoxNum.html(clock)
 
-    const handleRightPull = function() {
-        $parcelKey.classList.add('rotate-right');
-        $parcelKey.classList.remove('rotate-left');
-        var number = parseInt($count.getAttribute('data-count'), 10);
-        number += 1;
-        $count.setAttribute('data-count', number);
-        $count.textContent = number + 'm';
-    };
+    const startDragInterval = function(dir) {
+        if(!interval){
+            if(dir == 'left'){
+                interval = setInterval(() => {
 
-    const startDragInterval = function() {
-        if (!interval) {
-            if (dragging.left === true) {
-                interval = setInterval(handleLeftPull, 500);
-            } else if(dragging.right === true) {
-                interval = setInterval(handleRightPull, 500);
+                    time.m -= 10;
+                    if(time.m < 0){
+                        time.m = 50;
+                        time.h -= 1;
+                    }
+
+                    if(time.h == 24){
+                        time.h = 0;
+                    }
+
+                    if(time.h < 0){
+                        time.h = 23;
+                    }
+    
+                    clock = time.h + ':' + minFix(time.m)
+                    // console.log('Clock', clock)
+                    $ihreZeitBoxNum.html(clock)
+
+                    console.log([time.h, hours, minutes])
+                    console.log(time.h < hours)
+
+                    if(time.h < hours || time.h > 21){
+                        $ihreZeitBoxForGlow.removeClass('glowStatic');
+                        $ihreZeitBoxForGlow.addClass('glowStaticRed');
+                    }else{
+                        $ihreZeitBoxForGlow.removeClass('glowStaticRed');
+                        $ihreZeitBoxForGlow.addClass('glowStatic');
+                    }
+
+                }, 500);
+            }
+
+            if(dir == 'right'){
+                interval = setInterval(() => {
+                    time.m += 10;
+                    if(time.m == 60){
+                        time.m = 0;
+                        time.h += 1;
+                    }
+                    
+                    if(time.h == 24){
+                        time.h = 0;
+                    }
+
+                    if(time.h < 0){
+                        time.h = 23;
+                    }
+
+                    clock = time.h + ':' + minFix(time.m)
+                    // console.log('Clock', clock)
+                    $ihreZeitBoxNum.html(clock)
+
+                    if(time.h < hours || time.h > 21){
+                        $ihreZeitBoxForGlow.removeClass('glowStatic');
+                        $ihreZeitBoxForGlow.addClass('glowStaticRed');
+                    }else{
+                        $ihreZeitBoxForGlow.removeClass('glowStaticRed');
+                        $ihreZeitBoxForGlow.addClass('glowStatic');
+                    }
+                }, 500);
             }
         }
     };
@@ -60,55 +205,28 @@
         }
     }
 
-    const dragStartLeft = function(event) {
-        event.dataTransfer.setDragImage(img, 0, 0);
-    };
-
-    const dragStartRight = function(event) {
-        event.dataTransfer.setDragImage(img, 0, 0);
-    };
-
-    const dragLeft = function(event) {
-        if (!positions.left) {
-            positions.left = event.screenY;
-        } else if (event.screenY > positions.left) {
-            dragging.left = true;
-            startDragInterval();
-        }
-    };
-
-    const dragRight = function(event) {
-        if (!positions.right) {
-            positions.right = event.screenY;
-        } else if (event.screenY > positions.right) {
-            dragging.right = true;
-            startDragInterval();
-        }
-    };
-
-    const dragEndLeft = function(event) {
-        dragging.left = false;
-        positions.left = 0;
-        stopDragInterval();
-        $parcelKey.classList.remove('rotate-left');
-    };
-
-    const dragEndRight = function(event) {
-        dragging.right = false;
-        positions.right = 0;
-        stopDragInterval();
-        $parcelKey.classList.remove('rotate-right');
-    };
-
     const rotateKey = function(event) {
-        $fickdichmaxbox.style.transform = 'rotateZ('+event.target.value+'deg)';
+        $ihreZeitBoxJS.style.transform = 'rotateZ('+event.target.value+'deg) translateY(-50px)';
+        $ihreZeitBoxOnlyShadowJS.style.transform = 'rotateZ('+event.target.value+'deg) translateY(-50px)';
+        if(event.target.value < -15){
+            // left
+            startDragInterval('left'); 
+        }else if(event.target.value > 15){
+            // right
+            startDragInterval('right'); 
+        }else{
+            // neutral
+            stopDragInterval();
+            // $ihreZeitBoxForGlow.removeClass('glowStaticRed');
+            // $ihreZeitBoxForGlow.removeClass('glowStatic');
+        }
+
     };
 
-    $dragLeft.addEventListener('dragstart', dragStartLeft);
-    $dragRight.addEventListener('dragstart', dragStartRight);
-    $dragLeft.addEventListener('drag', dragLeft);
-    $dragRight.addEventListener('drag', dragRight);
-    $dragLeft.addEventListener('dragend', dragEndLeft);
-    $dragRight.addEventListener('dragend', dragEndRight);
-    $fickdichmaxslider.addEventListener('input', rotateKey);
-})();
+    // $dragLeft.addEventListener('dragstart', dragStartLeft);
+    // $dragRight.addEventListener('dragstart', dragStartRight);
+    // $dragLeft.addEventListener('drag', dragLeft);
+    // $dragRight.addEventListener('drag', dragRight);
+    // $dragLeft.addEventListener('dragend', dragEndLeft);
+    // $dragRight.addEventListener('dragend', dragEndRight);
+    $ihreZeitBoxSliderJS.addEventListener('input', rotateKey);

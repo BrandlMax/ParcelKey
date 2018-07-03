@@ -31,11 +31,12 @@
             <div class="FirstpagePic">
                 <!-- <img src="./src/img/test.png"> -->
                 <!-- Animation Box-->
-                <div id="introBox" class="animationImage">
+                <div id="introBox" class="animationImage glowStaticBlue">
                     <div class="box">
                         <div class="display init">
                             <div class="pic">  <img src="./src/img/favplacewhite.svg"> </div>
-                            <div class="ambient-glow-green"></div>
+                            <div class="subline">ParcelKey˚</div>
+                            <!-- <div class="ambient-glow-green"></div> -->
                         </div>
                     </div>
                     <div class="shadow"></div>
@@ -79,7 +80,7 @@
                         <div class="display time">
                             <div id="howLongBoxNum" class="num">10</div>
                             <div id="howLongBoxSub" class="subtext">Minuten</div>
-                            <div class="ambient-glow-green"></div>
+                            <!-- <div class="ambient-glow-green"></div> -->
                         </div>
                     </div>
                     <div class="shadow boxhover"></div>
@@ -90,7 +91,7 @@
                 <div class="rightText">
                     <h1>Ihr Paketstatus</h1>
                     <p>Mit ParcelKey können sie ihren Paketstatus jederzeit abfragen. Eine Berührung reicht und sie sehen wie
-                        lange es noch dauert, sowie wohin ihr Paket geliefert wird.</p>
+                        lange es noch dauert, sowie wohin ihr Paket geliefert wird. Probieren Sie es aus und klicken Sie auf den ParcelKey links.</p>
                 </div>
             </div>
     </section>
@@ -127,24 +128,21 @@
     <section class="sectionGridBackimage2 backgroundSection">
         <div class="contentGridTworows">
             <div class="leftPic parcelkey-front">
-                <span class="pull-left"></span>
-                <span class="pull-right"></span>
-                <span class="count" data-count="10">10m</span>
                 <!-- <img src="./src/img/ParcelBlanc.png"> -->
 
                 <!-- Animation Box-->
-                <div id="fickdichmaxbox" class="animationImage">
-                    <div class="box">
-                        <div class="display time">
-                            <div class="num">10</div>
-                            <div class="subtext">Minuten</div>
+                <div id="ihreZeitBox" class="animationImage">
+                    <div id="ihreZeitBoxOnly" class="box boxhover">
+                        <div class="display clock">
+                            <div class="num">10:00</div>
+                            <div class="subtext">Wunschzeit</div>
                             <div class="ambient-glow"></div>
                         </div>
                     </div>
-                    <div class="shadow"></div>
-                    <div class="box-glow"></div>
+                    <div class="shadow boxhover"></div>
+                    <div  id="ihreZeitBoxOnlyShadow" class="box-glow boxhover"></div>
                 </div>
-                <input id="fickdichmaxslider" type="range" min="-30" max="30" step="0.1">
+                <input id="ihreZeitBoxSlider" type="range" min="-30" max="30" step="0.1">
                 
             </div>
             <div class="rightText" style="margin-top: 170px;">
@@ -194,15 +192,21 @@
             <div class="leftPic">
                 <!-- <img src="./src/img/test.png"> -->
                 <!-- Animation Box-->
-                <div id="introBox" class="animationImage">
+                <div id="targetBox" class="animationImage">
                     <div class="box">
                         <div class="display init">
-                            <div class="pic">  <img src="./src/img/uniwhite.svg"> </div>
+                            <div class="pic">  <img id="targetIcon" src="./src/img/homewhite.svg"> </div>
                             <div class="ambient-glow"></div>
                         </div>
                     </div>
                     <div class="shadow"></div>
                     <div class="box-glow blue"></div>
+                </div>
+
+                <div class="selectTarget">
+                        <div><input type="radio" name="target" value="home" checked>Zuhause</div>
+                        <div><input type="radio" name="target" value="work">Arbeit</div>
+                        <div><input type="radio" name="target" value="uni">Uni</div>
                 </div>
                 
             </div>
@@ -222,11 +226,11 @@
                 <!-- <img src="./src/img/test.png"> -->
                 <!-- Animation Box-->
                 <!-- Animation Box-->
-                <div id="howLongBox" class="animationImage">
+                <div id="ReasonBox" class="animationImage">
                     <div class="box boxhover hovering">
                         <div class="display time">
-                            <div id="howLongBoxNum" class="num">100</div>
-                            <div id="howLongBoxSub" class="subtext">Gründe</div>
+                            <div id="ReasonBoxNum" class="num">100</div>
+                            <div id="ReasonBoxSub" class="subtext">Gründe</div>
                             <div class="ambient-glow-blue"></div>
                         </div>
                     </div>
@@ -273,10 +277,10 @@
    </footer>
    
    <!-- <script src="./src/js/blend-mode.js"></script> -->
+   <script src="./src/js/jQuery.js"></script>
    <script src="./src/js/p5.min.js"></script>
    <script src="./src/js/parcelkey-drag.js"></script>
    <script src="./src/js/sketch.js"></script>
-   <script src="./src/js/jQuery.js"></script>
    <script src="./src/js/parcelkey-anim.js"></script>
 </body>
 </html>

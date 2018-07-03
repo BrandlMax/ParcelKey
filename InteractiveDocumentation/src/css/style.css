@@ -447,11 +447,11 @@ img{
 }
 
 .parcelkey-front.rotate-left {
-    transform: rotateZ(-30deg);
+    transform: rotateZ(-30deg) translateY(-50px);
 }
 
 .parcelkey-front.rotate-right {
-    transform: rotateZ(30deg);
+    transform: rotateZ(30deg) translateY(-50px);
 }
 
 .parcelkey-front img {

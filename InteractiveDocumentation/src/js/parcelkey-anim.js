@@ -1,7 +1,19 @@
 // ############# Ihr Paketstatus
 // howLongBox: Check Status
-$('#erinnerungBox').click(() => {
-    console.log('Erinnerungsbox')
+const $howLongBox = $('#howLongBox');
+const $howLongBoxNum = $howLongBox.find('.num');
+const $howLongBoxSub = $howLongBox.find('.subtext');
+
+$howLongBox.click(() => {
+
+    $howLongBox.addClass('glow');
+
+    setTimeout(function() {
+        $howLongBox.removeClass('glow');
+    }, 2500);
+
+    console.log('TEST')
+
 })
 
 
@@ -108,3 +120,24 @@ $('#erinnerungBox').click(() => {
 // ############# Ihre Zeit
 
 // ############# Ihr Ort
+let selectedTarget;
+
+$("input[type='radio']").click(function(){
+    selectedTarget = $('input[name=target]:checked').val();
+    console.log(selectedTarget);
+
+    if(selectedTarget == "home"){
+        $('#targetIcon').fadeOut(100, function() {
+            $('#targetIcon').attr('src','./src/img/homewhite.svg')
+        }).fadeIn(1000);
+    }else if(selectedTarget == "work"){
+        $('#targetIcon').fadeOut(100, function() {
+            $('#targetIcon').attr('src','./src/img/arbeitwhite.svg')
+        }).fadeIn(1000);
+    }else{
+        // Uni
+        $('#targetIcon').fadeOut(100, function() {
+            $('#targetIcon').attr('src','./src/img/uniwhite.svg')
+        }).fadeIn(1000);
+    }
+})
