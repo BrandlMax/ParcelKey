@@ -116,6 +116,30 @@
     mix-blend-mode: color;  */
 }
 
+.ambient-glow-green{
+    background: #29c530;
+    height: 220px;
+    width: 200px;
+    border-radius: 900px;
+    position: absolute;
+    top: -20px;
+    display: block;
+    filter: blur(80px);
+    mix-blend-mode: color;
+}
+
+.ambient-glow-blue{
+    background: #2D9CDB;
+    height: 220px;
+    width: 200px;
+    border-radius: 900px;
+    position: absolute;
+    top: -20px;
+    display: block;
+    filter: blur(80px);
+    mix-blend-mode: color;
+}
+
 .box-glow.blue{
     background: #2740a2;
     opacity: 1;
