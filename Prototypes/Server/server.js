@@ -28,7 +28,7 @@ Object.keys(ifaces).forEach(function (ifname) {
     });
 });
 
-url="172.16.65.10";
+// url="172.16.65.10";
 // url="192.168.0.150";
 
 // SERVER //////////////////  
@@ -145,7 +145,7 @@ http.listen(3000, url, function () {
     console.log('ws listening on ws://' + url + ':3001/');
     // CONFIG LOGS
     let configString = {
-        "serverIpAdress": "192.168.0.150"
+        "serverIpAdress": url
     };
     console.log('//////// Config File: ////////');
     console.log(JSON.stringify(configString));
