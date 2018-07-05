@@ -16,19 +16,25 @@ var mpu9250 = require('mpu9250');
 
 // These values were generated using calibrate_gyro.js - you will want to create your own.
 // NOTE: These are temperature dependent.
-var GYRO_OFFSET = { x: 16.386809160305344,
+var GYRO_OFFSET = {
+    x: 16.386809160305344,
     y: 3.4809160305343494,
-    z: 0.6120152671755723 }
+    z: 0.6120152671755723
+}
 
 // These values were generated using calibrate_accel.js - you will want to create your own.
-var ACCEL_CALIBRATION =  { offset: 
-    { x: 0.08499247233072917,
-      y: 0.03302205403645833,
-      z: -0.0094781494140625 },
-   scale: 
-    { x: [ -0.93530029296875, 1.0503141276041668 ],
-      y: [ -0.9675732421875, 1.02311767578125 ],
-      z: [ 0.9200032552083334, -1.0945353190104166 ] } };
+var ACCEL_CALIBRATION = {
+    offset: {
+        x: 0.08499247233072917,
+        y: 0.03302205403645833,
+        z: -0.0094781494140625
+    },
+    scale: {
+        x: [-0.93530029296875, 1.0503141276041668],
+        y: [-0.9675732421875, 1.02311767578125],
+        z: [0.9200032552083334, -1.0945353190104166]
+    }
+};
 
 // Instantiate and initialize.
 var mpu = new mpu9250({
@@ -74,7 +80,7 @@ if (mpu.initialize()) {
     console.log('\n   Time     Accel.x  Accel.y  Accel.z  Gyro.x   Gyro.y   Gyro.z   Mag.x   Mag.y   Mag.z    Temp(°C) heading(°)');
     var cnt = 0;
     var lastMag = [0, 0, 0];
-    setInterval(function() {
+    setInterval(function () {
         var start = new Date().getTime();
         var m9;
         // Only get the magnetometer values every 100Hz
@@ -162,15 +168,21 @@ function Stats(vectorNames, numStats) {
     }
 
     // do something when app is closing
-    process.on('exit', exitHandler.bind(this, {cleanup: true}));
+    process.on('exit', exitHandler.bind(this, {
+        cleanup: true
+    }));
 
     // catches ctrl+c event
-    process.on('SIGINT', exitHandler.bind(this, {exit: true}));
+    process.on('SIGINT', exitHandler.bind(this, {
+        exit: true
+    }));
 
     // catches uncaught exceptions
-    process.on('uncaughtException', exitHandler.bind(this, {exit: true}));
+    process.on('uncaughtException', exitHandler.bind(this, {
+        exit: true
+    }));
 }
-Stats.prototype.add = function(vectorName, x, y, z) {
+Stats.prototype.add = function (vectorName, x, y, z) {
     var v = this.vectors[vectorName];
     var len = v.x.length;
     if (v.pos >= this.numStats) {
@@ -182,7 +194,7 @@ Stats.prototype.add = function(vectorName, x, y, z) {
     v.y[v.pos] = y;
     v.z[v.pos] = z;
 };
-Stats.prototype.addValue = function(vectorName, x) {
+Stats.prototype.addValue = function (vectorName, x) {
     var v = this.vectors[vectorName];
     v.isValue = true;
     if (v.pos >= this.numStats) {
@@ -238,7 +250,7 @@ Stats.prototype.printStats = function () {
     function numSameValues(values) {
         var same = 0;
         var lastVal = NaN;
-        values.forEach(function(val) {
+        values.forEach(function (val) {
             if (val === lastVal) {
                 same += 1;
             }

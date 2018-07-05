@@ -41,6 +41,11 @@ socket.on('toParcelKey', function (msg) {
             socket.emit('toAPI', 'Angenommen!');
         }, 9000)
     }
+
+    if (msg == 'Paketannahme!' || msg == 'Paketannahme!Cat') {
+        socket.emit('toAPI', 'Paketannahme!');
+        socket.emit('toParcelKeyTracker', 'Paketannahme!');
+    }
 });
 
 setInterval(() => {

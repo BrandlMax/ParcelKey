@@ -4,9 +4,9 @@ var i2c = require('i2c-bus'),
     font = require('oled-font-5x7');
 
 var opts = {
-  width: 128,
-  height: 32,
-  address: 0x3C
+    width: 128,
+    height: 32,
+    address: 0x3C
 };
 
 var oled = new oled(i2cBus, opts);
