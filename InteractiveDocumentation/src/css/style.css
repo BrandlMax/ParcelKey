@@ -44,7 +44,7 @@ img{
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
     background-position: center center;
@@ -57,7 +57,7 @@ img{
     background-image: url("/src/img/blaupakete.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -66,9 +66,9 @@ img{
     padding-top: 80px;
     padding-bottom: 80px;
     background-image: url("/src/img/uhricons.png");
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh !important;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -79,7 +79,7 @@ img{
     background-image: url("/src/img/orticons.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100wh;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -90,7 +90,7 @@ img{
     background-image: url("/src/img/blauParcels.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -101,7 +101,7 @@ img{
     background-image: url("/src/img/teamicon.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -112,7 +112,7 @@ img{
       background-image: url("/src/img/hintergrundpackblue.png");
       background-repeat: no-repeat;
       background-size: cover;
-      height: auto;
+    min-height:600px;
       padding-top: 3vw;
       padding-bottom: 8vw;
   }
@@ -122,7 +122,7 @@ img{
     background-image: url("/src/img/technik.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -133,7 +133,7 @@ img{
     background-image: url("/src/img/SWOT.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -144,7 +144,7 @@ img{
     background-image: url("/src/img/LeanCanvas.svg");
     background-repeat: no-repeat;
     background-size: 100vw;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -166,7 +166,7 @@ img{
     background-image: url("/src/img/ParcelKeyCharakter.svg");
     background-repeat: no-repeat;
     background-size: 100vw;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -178,7 +178,7 @@ img{
     background-image: url("/src/img/love.svg");
     background-repeat: no-repeat;
     background-size: 100vw;
-    height: auto;
+    min-height:600px;
     padding-top: 3vw;
     padding-bottom: 8vw;
 }
@@ -780,7 +780,9 @@ section.sectionGrid1.blueSection.sectionGrid {
 }
 
 .action--close {
-    line-height: 1;
+    border:0;
+    background: #1639C6;
+    color: #ffffff;
     position: absolute;
     z-index: 1000;
     top: 30px;
@@ -789,6 +791,7 @@ section.sectionGrid1.blueSection.sectionGrid {
     height: 60px;
     padding: 0;
     opacity: 0;
+    font-family: "iA Writer Duospace";
     -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
     transition: transform 0.3s, opacity 0.3s;
     -webkit-transform: scale3d(0.7,0.7,1);
@@ -807,7 +810,6 @@ section.sectionGrid1.blueSection.sectionGrid {
     .video-inner {
         width: 30vw;
         height: 30vw;
-        border: 20px solid #fff;
         -webkit-transform: scale3d(0.1,0.1,1) rotate3d(0,0,1,-5deg);
         transform: scale3d(0.1,0.1,1) rotate3d(0,0,1,-5deg);
     }
@@ -864,6 +866,7 @@ section.sectionGrid1.blueSection.sectionGrid {
         opacity: 1;
         -webkit-transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
         transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+
     }
 }
 
@@ -916,6 +919,7 @@ section.sectionGrid1.blueSection.sectionGrid {
         opacity: 1;
         -webkit-transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
         transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
+
     }
 }
 
