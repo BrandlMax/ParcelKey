@@ -43,7 +43,19 @@
                     <div class="box-glow"></div>
                 </div>
             </div>
-            <button class="button" style="font-family: 'iA Writer Duospace'">Trailer</button>
+            <div class="video-wrap">
+                <div class="video-inner">
+                    <video class="video-player" src="src/img/TailerParcelKey.mp4" preload="auto">
+                        <source src="src/img/TailerParcelKey.mp4" type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>
+                        <p>Sorry, but your browser does not support this video format.</p>
+                    </video>
+                    <button class="action action--close">
+                        <i class="fa fa-close"></i>
+                        <span class="action__label action__label--hidden">Close preview</span>
+                    </button>
+                </div><!-- /video-inner-->
+            </div><!-- /video-wrap-->
+            <button class="button action__opentrailer" style="font-family: 'iA Writer Duospace'">Trailer</button>
         </div>
     </section>
 
@@ -69,7 +81,7 @@
     </section>
 
 <!--Dritte Seite mit den verschwommenen Paketen auf blau-->
-    <section class="sectionGridBackimage1 bluebackgroundSection sectionGrid">
+    <section class="sectionGridBackimage1 whitebackgroundSection sectionGrid">
             <div class="contentGridTworows">
                 <div class="leftPic">
                     <!-- <img src="./src/img/test.png"> -->
@@ -163,7 +175,7 @@
             </div>
         </div>
     </section>
-    <section class="sectionGrid blueSection">
+    <section class="sectionGrid blueSection" style=" padding-bottom: 30px;">
         <div class="contentGridThreerows">
             <div>
                 <h1  class="threerows" >ParcelKey</h1>
@@ -257,9 +269,11 @@
         <div class="contentGridTworows">
             <div class="leftPic">
                 <img src="./src/img/domiParcel.png" alt="Bild von Domenika">
+                <p style="margin-top: -30px; margin-left: 82px"> Domenika Tomasovic<br>@domixotoma</p>
             </div>
             <div class="rightPic">
                 <img src="./src/img/maxParcel.png" alt=" Bild von Max">
+                <p style="margin-top: -30px; margin-left: 82px"> Maximilian Brandl<br>@brandlmax</p>
             </div>
         </div>
     </section>
@@ -282,5 +296,6 @@
    <script src="./src/js/parcelkey-drag.js"></script>
    <script src="./src/js/sketch.js"></script>
    <script src="./src/js/parcelkey-anim.js"></script>
+   <script src="./src/js/trailer.js"></script>
 </body>
 </html>
