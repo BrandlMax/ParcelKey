@@ -1,4 +1,4 @@
-const maxSpeed = 0.3;
+const maxSpeed = 0.6;
 var carOffset = 170;
 var traficLight = true;
 var traficLightPosition = 455;
@@ -8,9 +8,18 @@ var dragCarY = 40;
 var dragOffsetX = 0;
 var dragOffsetY = 0;
 var delivered = false;
+var $key = document.getElementById('floistsexyBox');
+var $shadow = $key.querySelector('.box-glow');
+var $num = $key.querySelector('.num');
+var $subtext = $key.querySelector('.subtext');
+var $pic = $key.querySelector('.pic');
 
 var postcarImage = null;
 var carImage = null;
+
+
+$pic.style.display = 'none';
+
 
 class Car {
   constructor(posX) {
@@ -90,11 +99,21 @@ var backgroundImage = null;
 var backgroundImageGreen = null;
 var parcelImage = null;
 
-var loading = 5;
+var loading = 4;
 
 function imageLoaded() {
   if (!(--loading)) {
     cars.push(new Postcar(20));
+      setTimeout(() => {
+          $key.classList.remove('glow');
+          $key.classList.add('glow');
+      $num.innerHTML = '10';
+      $subtext.innerHTML = 'Minuten';
+
+      setTimeout(() => {
+          $key.classList.remove('glow');
+  }, 2500);
+      }, 1000);
   }
 }
 
@@ -127,10 +146,6 @@ function setup() {
   });
   loadImage('/src/img/autochen.png', (img) => {
     carImage = img;
-    imageLoaded();
-  });
-  loadImage('/src/img/ParcelKey.png', (img) => {
-    parcelImage = img;
     imageLoaded();
   });
 }
@@ -177,6 +192,22 @@ function draw() {
       text(timeRemaining, 697.5, 290);
     }
   }
+
+  if (delivered) {
+      $key.classList.add('glow');
+      $num.style.display = 'none';
+      $subtext.style.display = 'none';
+      $pic.style.display = 'block';
+
+      setTimeout(() => {
+          $key.classList.remove('glow');
+      }, 2500);
+  } else {
+      $pic.style.display = 'none';
+      $num.style.display = 'block';
+      $subtext.style.display = 'block';
+
+  }
 }
 
 function getFrontCarX() {
@@ -198,6 +229,16 @@ function addCar(x) {
   });
   if (!collides) {
     cars.push(new Normalcar(x));
+      $key.classList.remove('glow');
+      $key.classList.add('glow');
+      $shadow.classList.add('red');
+      $num.innerHTML = '+2';
+      $subtext.innerHTML = 'Minuten';
+
+      setTimeout(() => {
+          $key.classList.remove('glow');
+          $shadow.classList.remove('red');
+      }, 2500);
   }
 }
 
@@ -205,6 +246,18 @@ function mousePressed() {
   if (mouseX > traficLightPosition - 25 && mouseX < traficLightPosition + 25 &&
     mouseY > 100 && mouseY < 200) {
     traficLight = !traficLight;
+
+    if (!traficLight) {
+        $key.classList.add('glow');
+        $shadow.classList.add('red');
+        $num.innerHTML = '+2';
+        $subtext.innerHTML = 'Minuten';
+
+        setTimeout(() => {
+            $key.classList.remove('glow');
+            $shadow.classList.remove('red');
+    }, 2500);
+    }
   }
   if (mouseX > dragCarX && mouseX < dragCarX + 55 && mouseY > dragCarY && mouseY < dragCarY + 30) {
     draggingCar = true;
