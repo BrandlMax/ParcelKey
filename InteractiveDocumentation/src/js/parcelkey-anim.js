@@ -141,3 +141,5 @@ $("input[type='radio']").click(function(){
         }).fadeIn(1000);
     }
 })
+
+window.isInViewPort = isInViewPort;

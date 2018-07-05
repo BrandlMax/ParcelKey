@@ -425,6 +425,85 @@ footer#footer {
     margin-right: auto;
     margin-left: auto;
     margin-bottom: auto;
+    position: relative;
+}
+
+.minigame .minigameImage {
+    position: absolute;
+    bottom:0;
+    right: 74px;
+}
+
+.minigame .minigameImage .box{
+    width: 140px;
+    height: 140px;
+}
+
+@media screen and (min-width: 0px) {
+    .minigame .minigameImage .box {
+        width: 20px;
+        height: 20px;
+        right: -100px;
+        bottom: 33px;
+
+    }
+}
+
+
+@media screen and (min-width: 300px) {
+    .minigame .minigameImage .box {
+        width: 40px;
+        height: 40px;
+        right: -100px;
+        bottom: 33px;
+
+    }
+}
+
+
+@media screen and (min-width: 420px) {
+    .minigame .minigameImage .box {
+        width: 60px;
+        height: 60px;
+        right: -75px;
+        bottom: 28px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .minigame .minigameImage .box {
+        width: 100px;
+        height: 100px;
+        right: -30px;
+        bottom: 27px;
+    }
+}
+
+@media screen and (min-width: 830px) {
+    .minigame .minigameImage .box {
+        width: 120px;
+        height: 120px;
+        right: -7px;
+        bottom: 33px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .minigame .minigameImage .box {
+        width: 140px;
+        height: 140px;
+        right: -7px;
+        bottom: 33px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .minigame .minigameImage .box {
+        width: 160px;
+        height: 160px;
+        right: 4px;
+        bottom: 13px;
+    }
 }
 
 .ParcekKeyminigame{
@@ -955,4 +1034,12 @@ section.sectionGrid1.blueSection.sectionGrid {
         -webkit-transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
         transform: scale3d(1,1,1) rotate3d(0,0,1,0deg);
     }
+}
+
+#perspectiveBox {
+    perspective: 10px;
+}
+
+#perspectiveBox .perspective-inner {
+    transform-style: preserve-3d;
 }

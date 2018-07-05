@@ -16,7 +16,7 @@
 
    <div class="navbar">
        <ul class="nav">
-          <li><a href="index.html">ParcelKey°</a></li>
+          <li><a href="index.html" style="font-size: 22px; margin-left: 13px;">ParcelKey°</a></li>
        </ul>
    </div>
 
@@ -28,10 +28,10 @@
                 <h1>„transparent, zuverlässig und auf den Punkt”</h1>
                 <p>Der Schlüssel zu ihrer passenden Lieferung ist ParcelKey°</p>
             </div>
-            <div class="FirstpagePic">
+            <div class="FirstpagePic" id="perspectiveBox">
                 <!-- <img src="./src/img/test.png"> -->
                 <!-- Animation Box-->
-                <div id="introBox" class="animationImage glowStaticBlue">
+                <div id="introBox" class="animationImage glowStaticBlue perspective-inner">
                     <div class="box">
                         <div class="display init">
                             <div class="pic">  <img src="./src/img/favplacewhite.svg"> </div>
@@ -67,7 +67,20 @@
                 Sitzen sie zu Hause und warten vergeblich auf die Bestellung?<br>
                     Ärgern sich weil die Zustellungen oft unzuverlässig und alles andere als transparent sind?  </p>
             </div>
-            <div class="minigame" id="minigame"></div>
+            <div class="minigame" id="minigame">
+                <div id="floistsexyBox" class="minigameImage animationImage">
+                    <div class="box ">
+                        <div class="display time">
+                            <div class="pic">  <img src="./src/img/hackenwhite.svg"> </div>
+                            <div class="num"></div>
+                            <div class="subtext"></div>
+                            <div class="ambient-glow"></div>
+                        </div>
+                    </div>
+                    <div class="shadow"></div>
+                    <div class="box-glow"></div>
+                </div>
+            </div>
             <div class="oneroweng" style="    margin-top: -30px;">
                 <h1>Was wäre wenn ...</h1>
                 <p>sie immer bescheid wüssten, wann das Paket kommt und ob es sich verspätet.
@@ -138,7 +151,7 @@
     <!--Fünfte Seite mit Uhr und Kalender Hintergrund-->
     <section class="sectionGridBackimage2 backgroundSection sectionGrid">
         <div class="contentGridTworows">
-            <div class="leftPic parcelkey-front">
+            <div class="leftPic parcelkey-front" style="  margin-top: 280px;">
                 <!-- <img src="./src/img/ParcelBlanc.png"> -->
 
                 <!-- Animation Box-->
@@ -156,7 +169,7 @@
                 <input id="ihreZeitBoxSlider" type="range" min="-30" max="30" step="0.1">
                 
             </div>
-            <div class="rightText" style="margin-top: 170px;">
+            <div class="rightText" style="margin-top: 250px;">
                 <h1>Ihre Zeit</h1>
                 <p>Bereits bei der Bestellung mit ParcelKey können Sie die Lieferzeit an Ihre Bedürfnisse anpassen.
                     Kommt ihnen doch mal etwas dazwischen können sie das bestehende Zeitfenster ändern. Hierzu berührt man
@@ -200,7 +213,7 @@
     <!--siebte Seite mit orticon Hintergrund-->
     <section class="sectionGridBackimage3 backgroundSection sectionGrid">
         <div class="contentGridTworows">
-            <div class="leftPic">
+            <div class="leftPic" style="margin-top: 260px;">
                 <!-- <img src="./src/img/test.png"> -->
                 <!-- Animation Box-->
                 <div id="targetBox" class="animationImage">
@@ -221,7 +234,7 @@
                 </div>
                 
             </div>
-            <div class="rightText" style="margin-top: 170px;">
+            <div class="rightText" style="margin-top: 250px;">
                 <h1>Ihr Ort </h1>
                 <p>Schon beim bestellen mit ParcelKey können sie den Lieferort ihren Bedürfnissen anpassen.
                     Kommt ihnen doch mal etwas dazwischen, können sie diesen außerdem ganz einfach ändern. Hierzu
@@ -233,7 +246,7 @@
     <!--Achte Seite mit den verschwommenen ParcelKeys auf blau-->
     <section class="sectionGridBackimage4 bluebackgroundSection sectionGrid">
         <div class="contentGridTworows">
-            <div class="leftPic">
+            <div class="leftPic" style="margin-top: 350px;">
                 <!-- <img src="./src/img/test.png"> -->
                 <!-- Animation Box-->
                 <!-- Animation Box-->
@@ -249,7 +262,7 @@
                     <div class="box-glow"></div>
                 </div>
             </div>
-            <div class="rightText">
+            <div class="rightText" style="margin-top: 250px;">
                 <h1>Ihre Gründe für ParcelKey</h1>
                 <p>Immer wissen wie es um ihre Bestellung steht. Eine ehrliche und transparente Anlauftelle, wenn es mal
                     Probleme geben sollte und einen unvergesslichen Spaßfaktor. ParcelKey ist ein Produkt für die ganze Familie,
@@ -261,11 +274,11 @@
     <!--Neunte Seite mit Teamicons Hintergrund-->
     <section class="sectionGridBackimage5 backgroundSection sectionGrid aboutus">
         <div class="contentGridOnerow">
-            <div class="onerowbreit">
+            <div class="onerowbreit" style="margin-top: 200px;">
                 <h2>Unser Team steht Ihnen gerne zur Verfügung</h2>
             </div>
         </div>
-        <div class="contentGridTworows">
+        <div class="contentGridTworows" style="margin-top: 0px; padding-bottom: 50px;">
             <div class="leftPic">
                 <img src="./src/img/domiParcel.png" alt="Bild von Domenika">
                 <p style="margin-top: -30px; margin-left: 82px"> Domenika Tomasovic<br>@domixotoma</p>
@@ -296,5 +309,6 @@
    <script src="./src/js/sketch.js"></script>
    <script src="./src/js/parcelkey-anim.js"></script>
    <script src="./src/js/trailer.js"></script>
+   <script src="./src/js/perspective.js"></script>
 </body>
 </html>
