@@ -8,7 +8,7 @@ var dragCarY = 40;
 var dragOffsetX = 0;
 var dragOffsetY = 0;
 var delivered = false;
-var $key = document.getElementById('floistsexyBox');
+var $key = document.getElementById('minigameKey');
 var $shadow = $key.querySelector('.box-glow');
 var $num = $key.querySelector('.num');
 var $subtext = $key.querySelector('.subtext');
@@ -16,6 +16,8 @@ var $pic = $key.querySelector('.pic');
 
 var postcarImage = null;
 var carImage = null;
+
+var time = 10;
 
 
 $pic.style.display = 'none';
@@ -107,7 +109,7 @@ function imageLoaded() {
       setTimeout(() => {
           $key.classList.remove('glow');
           $key.classList.add('glow');
-      $num.innerHTML = '10';
+      $num.innerHTML = time;
       $subtext.innerHTML = 'Minuten';
 
       setTimeout(() => {
@@ -151,6 +153,8 @@ function setup() {
 }
 
 function draw() {
+    remainingtime();
+
   if (backgroundImage && backgroundImageGreen) {
     background(255);
     if (traficLight) {
@@ -235,6 +239,8 @@ function addCar(x) {
       $num.innerHTML = '+2';
       $subtext.innerHTML = 'Minuten';
 
+      timeRemaining = timeRemaining + 2;
+
       setTimeout(() => {
           $key.classList.remove('glow');
           $shadow.classList.remove('red');
@@ -252,7 +258,7 @@ function mousePressed() {
         $shadow.classList.add('red');
         $num.innerHTML = '+2';
         $subtext.innerHTML = 'Minuten';
-
+        timeRemaining = timeRemaining + 2;
         setTimeout(() => {
             $key.classList.remove('glow');
             $shadow.classList.remove('red');
@@ -284,4 +290,26 @@ function restart() {
   cars = [];
   cars.push(new Postcar(-88));
   delivered = false;
+  time = 10;
 }
+
+var trgrt = false;
+$key.addEventListener("click", () => {
+
+    if(!trgrt){
+        trgrt = true;
+        console.log('TEST');
+        $key.classList.remove('glow');
+        $key.classList.add('glow');
+        $shadow.classList.add('green');
+        $num.innerHTML = timeRemaining;
+        $subtext.innerHTML = 'Minuten';
+    
+        setTimeout(() => {
+            $key.classList.remove('glow');
+            $shadow.classList.remove('red');
+            trgrt = false;
+        }, 2500);
+    }
+
+});
