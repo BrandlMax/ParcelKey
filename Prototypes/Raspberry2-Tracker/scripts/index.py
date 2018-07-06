@@ -81,8 +81,7 @@ def parcelkey():
     epd.init()
 
     # image = Image.new('1', (epd2in7.EPD_WIDTH, epd2in7.EPD_HEIGHT), 255)
-    epd.display_frame(epd.get_frame_buffer(
-        Image.open('img/paketangenommen.bmp')))
+    epd.display_frame(epd.get_frame_buffer(Image.open('img/paketangenommen.bmp')))
 
     epd.display_frame(epd.get_frame_buffer(Image.open('img/ParcelKey.bmp')))
 
@@ -98,6 +97,7 @@ def parcelCat():
 
     epd.display_frame(epd.get_frame_buffer(Image.open('img/ParcelKey.bmp')))
 
+
 def kontaktUpdate():
     print("Init KontaktUpdate")
     epd = epd2in7.EPD()
@@ -112,6 +112,7 @@ def kontaktUpdate():
 #####################
 # RFID
 
+
 import RPi.GPIO as GPIO
 import SimpleMFRC522
 
@@ -119,11 +120,11 @@ import SimpleMFRC522
 def scanRFID():
     print("RFID READING")
     reader = SimpleMFRC522.SimpleMFRC522()
-
+    print("RFID READER Started")
     while True:
         id, text = reader.read()
         print(id)
-        # print(text)
+        print(text)
         if id == 462807405895:
             # CatCard
             emit(wsGlobal, "testchannel", "Paketannahme!Cat")
@@ -140,6 +141,7 @@ def scanRFID():
             # Fallback any RFID
             emit(wsGlobal, "testchannel", "Paketannahme!")
             emit(wsGlobal, "toParcelKey", "Paketannahme!")
+            emit(wsGlobal, "testchannel", "Paketannahme!Else")
             parcelkey()
             scanRFID()
 
@@ -198,11 +200,9 @@ def on_toParcelKeyTracker(data):
 
 def on_message(ws, data):
     # print('msg',data)
-    displayInit()
+    # displayInit()
     on("testchannel", data, on_testchannel)
     on("toParcelKeyTracker", data, on_toParcelKeyTracker)
-    # print(on_toParcelKeyTracker)
-
 
 
 def on_error(ws, error):
@@ -224,7 +224,6 @@ def on_open(ws):
     wsThread = threading.Thread(name="websocket", target=run)
     wsThread.start()
     print('ThreadCompleted')
-
     rfidThread = threading.Thread(name="rfid", target=scanRFID)
     rfidThread.start()
 
@@ -234,10 +233,7 @@ if __name__ == "__main__":
     # p2.start()
     wait_for_internet_connection()
     websocket.enableTrace(True)
-    ws = websocket.WebSocketApp(url,
-                                on_message=on_message,
-                                on_error=on_error,
-                                on_close=on_close)
+    ws = websocket.WebSocketApp(url, on_message=on_message, on_error=on_error, on_close=on_close)
     ws.on_open = on_open
     ws.run_forever()
 
