@@ -19,7 +19,11 @@ const directions = {
     'down': -1
 };
 const offset = [0, 0, 0];
-const scale = [[0, 0], [0, 0], [0, 0]];
+const scale = [
+    [0, 0],
+    [0, 0],
+    [0, 0]
+];
 
 if (mpu.initialize()) {
     runNextCapture();

@@ -10,25 +10,25 @@ const mpu = new mpu9250({
 });
 
 function gyroBiasCalibrationSync() {
-	const avg = {
-		x: 0,
-		y: 0,
-		z: 0
-	};
+    const avg = {
+        x: 0,
+        y: 0,
+        z: 0
+    };
 
-	for (var i = 0; i < NUM_READS; i++) {
-		var gyroValues = mpu.getGyro();
-		avg.x += gyroValues[0];
-		avg.y += gyroValues[1];
-		avg.z += gyroValues[2];
-		sleep.usleep(5000);
-	}
+    for (var i = 0; i < NUM_READS; i++) {
+        var gyroValues = mpu.getGyro();
+        avg.x += gyroValues[0];
+        avg.y += gyroValues[1];
+        avg.z += gyroValues[2];
+        sleep.usleep(5000);
+    }
 
-	avg.x /= -NUM_READS;
-	avg.y /= -NUM_READS;
-	avg.z /= -NUM_READS;
+    avg.x /= -NUM_READS;
+    avg.y /= -NUM_READS;
+    avg.z /= -NUM_READS;
 
-	return avg;
+    return avg;
 }
 
 module.exports = () => {

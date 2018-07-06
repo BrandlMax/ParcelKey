@@ -38,15 +38,15 @@ var mpu = new mpu9250({
 var kalmanX = new mpu.Kalman_filter();
 var kalmanY = new mpu.Kalman_filter();
 
-function getData(){
-	var values = mpu.getMotion9();
-	var pitch = mpu.getPitch(values);
-	var roll = mpu.getRoll(values);
-	var yaw = mpu.getYaw(values);
+function getData() {
+    var values = mpu.getMotion9();
+    var pitch = mpu.getPitch(values);
+    var roll = mpu.getRoll(values);
+    var yaw = mpu.getYaw(values);
 
     kalmanX.setAngle(roll);
     kalmanY.setAngle(pitch);
-    
+
     var kalAngleX = 0,
         kalAngleY = 0,
         kalAngleZ = 0,
@@ -64,46 +64,48 @@ function getData(){
     gyroYrate = values[4] / 131.0;
     gyroZrate = values[5] / 131.0;
 
-    var micros = function() {
-		return new Date().getTime();
-	};
-	var dt = 0;
+    var micros = function () {
+        return new Date().getTime();
+    };
+    var dt = 0;
 
-	timer = micros();
+    timer = micros();
 
     var dt = (micros() - timer) / 1000000;
-	    timer = micros();
+    timer = micros();
 
-        if ((roll < -90 && kalAngleX > 90) || (roll > 90 && kalAngleX < -90)) {
-            kalmanX.setAngle(roll);
-            compAngleX = roll;
-            kalAngleX = roll;
-            gyroXangle = roll;
-        } else {
-            kalAngleX = kalmanX.getAngle(roll, gyroXrate, dt);
-        }
+    if ((roll < -90 && kalAngleX > 90) || (roll > 90 && kalAngleX < -90)) {
+        kalmanX.setAngle(roll);
+        compAngleX = roll;
+        kalAngleX = roll;
+        gyroXangle = roll;
+    } else {
+        kalAngleX = kalmanX.getAngle(roll, gyroXrate, dt);
+    }
 
-        if (Math.abs(kalAngleX) > 90) {
-            gyroYrate = -gyroYrate;
-        }
-        kalAngleY = kalmanY.getAngle(pitch, gyroYrate, dt);
+    if (Math.abs(kalAngleX) > 90) {
+        gyroYrate = -gyroYrate;
+    }
+    kalAngleY = kalmanY.getAngle(pitch, gyroYrate, dt);
 
-        gyroXangle += gyroXrate * dt;
-        gyroYangle += gyroYrate * dt;
-        compAngleX = 0.93 * (compAngleX + gyroXrate * dt) + 0.07 * roll;
-        compAngleY = 0.93 * (compAngleY + gyroYrate * dt) + 0.07 * pitch;
+    gyroXangle += gyroXrate * dt;
+    gyroYangle += gyroYrate * dt;
+    compAngleX = 0.93 * (compAngleX + gyroXrate * dt) + 0.07 * roll;
+    compAngleY = 0.93 * (compAngleY + gyroYrate * dt) + 0.07 * pitch;
 
-        if (gyroXangle < -180 || gyroXangle > 180) gyroXangle = kalAngleX;
-        if (gyroYangle < -180 || gyroYangle > 180) gyroYangle = kalAngleY;
+    if (gyroXangle < -180 || gyroXangle > 180) gyroXangle = kalAngleX;
+    if (gyroYangle < -180 || gyroYangle > 180) gyroYangle = kalAngleY;
 
-        var accel = {
-            pitch: compAngleY,
-            roll: compAngleX
-        };
+    var accel = {
+        pitch: compAngleY,
+        roll: compAngleX
+    };
 
-        console.log({
-            gyroXangle, gyroYangle, gyroZangle
-        })
+    console.log({
+        gyroXangle,
+        gyroYangle,
+        gyroZangle
+    })
 }
 
 if (mpu.initialize()) {

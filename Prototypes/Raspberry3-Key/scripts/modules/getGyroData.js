@@ -36,7 +36,7 @@ function getGyroData() {
 
         m9 = mpu.getMotion9();
         lastMag = [m9[6], m9[7], m9[8]];
-        
+
         const end = new Date().getTime();
         const t = (end - start) / 1000;
 
@@ -52,9 +52,17 @@ function getGyroData() {
             z: m9[2],
         };
 
-        return {init: true,gyro, accel};
-    }else{
-        return {init: false,gyro, accel};
+        return {
+            init: true,
+            gyro,
+            accel
+        };
+    } else {
+        return {
+            init: false,
+            gyro,
+            accel
+        };
     }
 }
 

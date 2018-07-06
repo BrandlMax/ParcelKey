@@ -1,12 +1,18 @@
 var Gpio = require('pigpio').Gpio, //include pigpio to interact with the GPIO
 
-ledRed = new Gpio(27, {mode: Gpio.OUTPUT}), //use GPIO pin 4 as output for RED
-ledGreen = new Gpio(22, {mode: Gpio.OUTPUT}), //use GPIO pin 17 as output for GREEN
-ledBlue = new Gpio(17, {mode: Gpio.OUTPUT}), //use GPIO pin 27 as output for BLUE
+    ledRed = new Gpio(27, {
+        mode: Gpio.OUTPUT
+    }), //use GPIO pin 4 as output for RED
+    ledGreen = new Gpio(22, {
+        mode: Gpio.OUTPUT
+    }), //use GPIO pin 17 as output for GREEN
+    ledBlue = new Gpio(17, {
+        mode: Gpio.OUTPUT
+    }), //use GPIO pin 27 as output for BLUE
 
-redRGB = 0,
-greenRGB = 255,
-blueRGB = 0;
+    redRGB = 0,
+    greenRGB = 255,
+    blueRGB = 0;
 
 ledRed.digitalWrite(1);
 ledGreen.digitalWrite(1);
