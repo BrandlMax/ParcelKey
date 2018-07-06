@@ -127,26 +127,65 @@
 <section class="sectionGrid1 whiteSection" style="padding-bottom: 20px;">
     <div class="contentGridOnerow">
         <div class="onerowbreit">
-            <h2>Die Historie unseres Technik Prototypen</h2>
+            <h1>Prototypische Umsetzung</h1>
         </div>
     </div>
 </section>
 <section class="sectionGrid whiteSection">
     <div class="contentGridThreerows">
         <div>
-            <h1  class="threerows" >Karton</h1>
-            <p class="threerows">Um zunächst die Einzelteile zu testen, würde ein einfacher Karton verwendet, um Änderungen ohne großen Aufwand vornehmen zu können. <br> <br></p>
-            <img src="./src/img/innenkarton.jpg" style="max-width: 80%;  margin-left: 45px">
-        </div>
-        <div >
-            <h1  class="threerows" >Hübscher Karton</h1>
-            <p class="threerows" >Als diese Teile funktionierten, hat das Team auf ParcelKey blau umgestellt. Zudem wurde geschaut wie viel Platz mit Ordnung gebraucht wird.<br> <br></p>
-            <img src="./src/img/proto.jpg" style="max-width: 80%; margin-left: 45px ">
+            <h2  class="threerows">Die Bestandteile:</h2>
+            <p class="threerows" > Um das Erlebnis in einem MVP darzustellen, sind mit Hilfe der folgenden Bestandteile die Prozesse prototypisch umgesetzt worden.<br> <br> <br> <br></p>
+            <img src="/src/gallerie/ausii.JPG" style="max-width: 80%; margin-left: 45px">
         </div>
         <div>
-            <h1  class="threerows">Big ParcelKey</h1>
-            <p class="threerows" >Letztendlich wurde ein größeres Abbild der kleinen ParcelKeys auf Plexiglas gefräst und zusammengeklebt, um die Technik darin zu verbauen <br> <br></p>
-            <img src="./src/img/innenleben.jpg" style="max-width: 80%; margin-left: 45px">
+            <h2  class="threerows" >ParcelKey</h2>
+            <p class="threerows"> Der ParcelKey besteht aus einem Raspberry Pi 3 Model B+, einem
+                Gyro/Accelerometer Sensor zum Messen der Würfellage und
+                Bewegungen, einem 0.96 Zoll OLED Display, einer RGB LED und
+                einem RFID-Chip. <br> <br></p>
+            <img src="../src/gallerie/grüninnen.jpg" style="max-width: 80%;  margin-left: 45px">
+        </div>
+        <div >
+            <h2  class="threerows" >ParcelKey Tracker</h2>
+            <p class="threerows" >Der ParcelKey Tracker besteht aus einem Raspberry Pi 2 Model B,
+                einem 2.7 inch e-Paper Display, einem RFID-Reader für die
+                Paketannahme und einem Beacon zum Distanz messen.<br> <br> <br></p>
+            <img src="./src/img/tracker.png" style="max-width: 80%; margin-left: 45px ">
+        </div>
+    </div>
+</section>
+<section class="sectionGrid whiteSection" style="margin-top: -100px">
+    <div class="contentGridThreerows">
+        <div>
+            <h2  class="threerows">ParcelKey „Server“</h2>
+            <p class="threerows" >
+                Ein NodeJS Server der zugleich einen Socket.io Server und einen
+                normalen Webserver ausführt.
+                Er „managed“ somit die Kommunikation zwischen ParcelKey und
+                ParcelKey Tracker.
+                Des Weiteren hosted er den ParcelKey Tracker Emulator und den
+                Demo Shop.<br> <br><br><br></p>
+            <img src="./src/gallerie/greene.jpg" style="max-width: 80%; margin-left: 45px">
+        </div>
+        <div>
+            <h2  class="threerows" >Tracker Emulator</h2>
+            <p class="threerows">Der ParcelKey Tracker Emulator wurde ursprünglich als Fallback
+                gebaut, da es Probleme mit dem ParcelKey Tracker bzw. mit dem E-
+                Paper Display gab, welches nicht alle Fälle abbilden konnte. Für
+                diese Fälle kann
+                nun der Emulator genommen werden, welcher ebenfalls mit dem
+                ParcelKey kommunizieren kann. <br> <br></p>
+            <img src="./src/img/emulator.png" style="max-width: 80%;  margin-left: 45px">
+        </div>
+        <div >
+            <h2  class="threerows" >Demo Shop</h2>
+            <p class="threerows" >Der Demo Shop soll den Bestellprozess simulieren und
+                kommuniziert ebenfalls über den Websocket mit dem ParcelKey.
+                Ursprünglich war geplant die Web Bluetooth API auch schon für
+                den Prototypen zu nutzen, jedoch ist diese Technologie noch
+                nicht ausgereift genug für unsere Zwecke.<br> <br> <br></p>
+            <img src="./src/img/demo.png" style="max-width: 80%; margin-left: 45px ">
         </div>
     </div>
 </section>
@@ -156,9 +195,10 @@
    <footer id="footer">
        <div class="foo">
            <ul class="foo">
+               <li><a href="index.html">Home</a></li>
                <li><a href="design.html">Design</a></li>
                <li><a href="management.html">Management</a></li>
-               <li><a href="technik.html">Technik</a></li>
+               <li style="text-decoration: underline;"><a href="technik.html">Technik</a></li>
                <li><a href="gallerie.html">Gallerie</a></li>
                <li><a href="danksagung.html">Danksagung</a></li>
            </ul>
