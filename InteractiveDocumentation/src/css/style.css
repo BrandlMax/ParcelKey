@@ -439,72 +439,6 @@ footer#footer {
     height: 140px;
 }
 
-@media screen and (min-width: 0px) {
-    .minigame .minigameImage .box {
-        width: 20px;
-        height: 20px;
-        right: -100px;
-        bottom: 33px;
-
-    }
-}
-
-
-@media screen and (min-width: 300px) {
-    .minigame .minigameImage .box {
-        width: 40px;
-        height: 40px;
-        right: -100px;
-        bottom: 33px;
-
-    }
-}
-
-
-@media screen and (min-width: 420px) {
-    .minigame .minigameImage .box {
-        width: 60px;
-        height: 60px;
-        right: -75px;
-        bottom: 28px;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    .minigame .minigameImage .box {
-        width: 100px;
-        height: 100px;
-        right: -30px;
-        bottom: 27px;
-    }
-}
-
-@media screen and (min-width: 830px) {
-    .minigame .minigameImage .box {
-        width: 120px;
-        height: 120px;
-        right: -7px;
-        bottom: 33px;
-    }
-}
-
-@media screen and (min-width: 1000px) {
-    .minigame .minigameImage .box {
-        width: 140px;
-        height: 140px;
-        right: -7px;
-        bottom: 33px;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .minigame .minigameImage .box {
-        width: 160px;
-        height: 160px;
-        right: 4px;
-        bottom: 13px;
-    }
-}
 
 .ParcekKeyminigame{
     width: 250px;
@@ -755,63 +689,6 @@ section.sectionGrid1.blueSection.sectionGrid {
     margin-top: 5vw;
     margin-bottom: 0vw;
 }
-
-
-@media only screen and (max-width: 960px) {
-
-    .contentGridThreerows {
-        grid-template-columns: 1fr; 
-    }
-    
-    .contentGridTworows{
-        grid-template-columns: 1fr; 
-    }
-
-    .contentGridOnerow{
-        grid-template-columns: 1fr; 
-    }
-
-    .leftText{
-        max-width: 60vw;
-    }
-
-    .rightText{
-        max-width: 60vw;
-    }
-
-    .foo{
-        height: auto;
-    }
-
-    .foo > li {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .gallerie{
-        text-align: center;
-    }
-    
-    .gallerie img{
-        width: 50%;
-        max-width: 50% !important;
-    }
-}
-
-
-@media only screen and (max-width: 450px) {
-    .gallerie{
-        text-align: center;
-    }
-
-    .gallerie img{
-        width: 90%;
-        max-width: 90% !important;
-    }
-}
-
-
 
 
 .video-wrap {
@@ -1078,4 +955,216 @@ section.sectionGrid1.blueSection.sectionGrid {
 
 #perspectiveBox .perspective-inner {
     transform-style: preserve-3d;
+}
+
+
+/* Quick Dirty Responsive Fixes */
+
+.minigame .pic {
+    width: 50px;
+}
+
+.minigame .minigameImage .box{
+    position: absolute;
+}
+
+.minigame .display.time .num {
+    font-size: 7vw;
+    margin-top: -2vw;
+}
+
+.minigame .display.time .subtext {
+    font-size: 2vw;
+    margin-top: -2vw;
+}
+.thankyou .oneroweng {
+        margin-bottom: 8vw;
+}
+
+@media screen and (min-width: 0px) {
+    .minigame .minigameImage .box {
+        width: 20px;
+        height: 20px;
+        right: -2vw;
+        top: -13vw;
+    }
+}
+
+
+@media screen and (min-width: 300px) {
+    .minigame .minigameImage .box {
+        width: 40px;
+        height: 40px;
+        right: -2vw;
+        top: -13vw;
+
+    }
+}
+
+
+@media screen and (min-width: 420px) {
+    .minigame .minigameImage .box {
+        width: 60px;
+        height: 60px;
+        right: -2vw;
+        top: -13vw;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .minigame .minigameImage .box {
+        width: 100px;
+        height: 100px;
+        right: -2vw;
+        top: -13vw;
+    }
+}
+
+@media screen and (min-width: 830px) {
+    .minigame .minigameImage .box {
+        width: 120px;
+        height: 120px;
+        right: -2vw;
+        top: -13vw;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .minigame .minigameImage .box {
+        width: 140px;
+        height: 140px;
+        right: -2vw;
+        top: -13vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .minigame .minigameImage .box {
+        width: 160px;
+        height: 160px;
+        right: -2vw;
+        top: -13vw;
+    }
+    .display.time .num {
+        font-size: 5vw;
+    }
+
+    .display.time .subtext {
+        font-size: 2vw;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .gallerie{
+        text-align: center;
+    }
+
+    .gallerie img{
+        width: 90%;
+        max-width: 90% !important;
+    }
+}
+
+
+@media only screen and (max-width: 960px) {
+
+    .contentGridThreerows {
+        grid-template-columns: 1fr; 
+    }
+    
+    .contentGridTworows{
+        grid-template-columns: 1fr; 
+    }
+
+    .contentGridOnerow{
+        grid-template-columns: 1fr; 
+    }
+
+    .leftText{
+        max-width: 60vw;
+    }
+
+    .rightText{
+        max-width: 60vw;
+        margin-top: 25px !important;
+    }
+
+    .foo{
+        height: auto;
+    }
+
+    .foo > li {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .gallerie{
+        text-align: center;
+    }
+    
+    .gallerie img{
+        width: 50%;
+        max-width: 50% !important;
+    }
+}
+
+
+@-moz-document url-prefix() {
+    .sectionGridFirstpage .button{
+        margin-top: 25vw;
+    }
+
+    .minigame{
+        min-height: 28vw;
+    }
+
+    .oneroweng{
+        z-index: 120;
+    }
+
+    .sectionGridBackimage5 .rightPic{
+        display: contents;
+        text-align: center;
+    }
+
+    .sectionGridBackimage5 .rightPic img {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .sectionGridBackimage5 .rightPic p {
+        margin-left: 0px !important;
+    }
+
+    .sectionGridBackimage5 .leftPic{
+        display: contents;
+        text-align: center;
+    }
+
+    .sectionGridBackimage5 .leftPic p{
+        margin-left: 0px !important;
+    }
+
+    .sectionGridBackimage5 .leftPic img {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+
+    .rightText{
+        margin-top: 250px !important;   
+    }
+
+    /* .rightPic{
+        margin-top: 250px;
+    } */
+
+    .rightPic {
+
+        margin-top: 10vw;
+        margin-bottom: 20vw;
+    
+    }
+
 }

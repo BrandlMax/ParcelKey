@@ -111,7 +111,7 @@
     // };
 
     let interval;
-    this.time = {
+    let ktime = {
         h: hours,
         m: minutes
     };
@@ -125,7 +125,7 @@
         }
     }
 
-    clock = time.h + ':' + minFix(time.m)
+    clock = ktime.h + ':' + minFix(ktime.m)
     // console.log('Clock', clock)
     $ihreZeitBoxNum.html(clock)
 
@@ -134,28 +134,28 @@
             if(dir == 'left'){
                 interval = setInterval(() => {
 
-                    time.m -= 10;
-                    if(time.m < 0){
-                        time.m = 50;
-                        time.h -= 1;
+                    ktime.m -= 10;
+                    if(ktime.m < 0){
+                        ktime.m = 50;
+                        ktime.h -= 1;
                     }
 
-                    if(time.h == 24){
-                        time.h = 0;
+                    if(ktime.h == 24){
+                        ktime.h = 0;
                     }
 
-                    if(time.h < 0){
-                        time.h = 23;
+                    if(ktime.h < 0){
+                        ktime.h = 23;
                     }
     
-                    clock = time.h + ':' + minFix(time.m)
+                    clock = ktime.h + ':' + minFix(ktime.m)
                     // console.log('Clock', clock)
                     $ihreZeitBoxNum.html(clock)
 
-                    console.log([time.h, hours, minutes])
-                    console.log(time.h < hours)
+                    console.log([ktime.h, hours, minutes])
+                    console.log(ktime.h < hours)
 
-                    if(time.h < hours || time.h > 21){
+                    if(ktime.h < hours || ktime.h > 21){
                         $ihreZeitBoxForGlow.removeClass('glowStatic');
                         $ihreZeitBoxForGlow.addClass('glowStaticRed');
                     }else{
@@ -168,25 +168,25 @@
 
             if(dir == 'right'){
                 interval = setInterval(() => {
-                    time.m += 10;
-                    if(time.m == 60){
-                        time.m = 0;
-                        time.h += 1;
+                    ktime.m += 10;
+                    if(ktime.m == 60){
+                        ktime.m = 0;
+                        ktime.h += 1;
                     }
                     
-                    if(time.h == 24){
-                        time.h = 0;
+                    if(ktime.h == 24){
+                        ktime.h = 0;
                     }
 
-                    if(time.h < 0){
-                        time.h = 23;
+                    if(ktime.h < 0){
+                        ktime.h = 23;
                     }
 
-                    clock = time.h + ':' + minFix(time.m)
+                    clock = ktime.h + ':' + minFix(ktime.m)
                     // console.log('Clock', clock)
                     $ihreZeitBoxNum.html(clock)
 
-                    if(time.h < hours || time.h > 21){
+                    if(ktime.h < hours || ktime.h > 21){
                         $ihreZeitBoxForGlow.removeClass('glowStatic');
                         $ihreZeitBoxForGlow.addClass('glowStaticRed');
                     }else{
