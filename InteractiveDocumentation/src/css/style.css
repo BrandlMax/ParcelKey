@@ -977,6 +977,7 @@ section.sectionGrid1.blueSection.sectionGrid {
     font-size: 2vw;
     margin-top: -2vw;
 }
+
 .thankyou .oneroweng {
         margin-bottom: 8vw;
 }
@@ -1051,6 +1052,16 @@ section.sectionGrid1.blueSection.sectionGrid {
 
     .display.time .subtext {
         font-size: 2vw;
+    }
+
+    .minigame .display.time .num {
+        font-size: 90px;
+        margin-top: -20px;
+    }
+    
+    .minigame .display.time .subtext {
+        font-size: 30px;
+        margin-top: -20px;
     }
 }
 
