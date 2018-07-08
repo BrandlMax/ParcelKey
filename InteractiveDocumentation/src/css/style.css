@@ -989,6 +989,10 @@ section.sectionGrid1.blueSection.sectionGrid {
         right: -2vw;
         top: -13vw;
     }
+    .minigame .box-glow{
+        right: -2vw;
+        top: -13vw;
+    }
 }
 
 
@@ -1000,6 +1004,10 @@ section.sectionGrid1.blueSection.sectionGrid {
         top: -13vw;
 
     }
+    .minigame .box-glow{
+        right: -2vw;
+        top: -13vw;
+    }
 }
 
 
@@ -1007,6 +1015,10 @@ section.sectionGrid1.blueSection.sectionGrid {
     .minigame .minigameImage .box {
         width: 60px;
         height: 60px;
+        right: -2vw;
+        top: -13vw;
+    }
+    .minigame .box-glow{
         right: -2vw;
         top: -13vw;
     }
@@ -1019,12 +1031,20 @@ section.sectionGrid1.blueSection.sectionGrid {
         right: -2vw;
         top: -13vw;
     }
+    .minigame .box-glow{
+        right: -2vw;
+        top: -13vw;
+    }
 }
 
 @media screen and (min-width: 830px) {
     .minigame .minigameImage .box {
         width: 120px;
         height: 120px;
+        right: -2vw;
+        top: -13vw;
+    }
+    .minigame .box-glow{
         right: -2vw;
         top: -13vw;
     }
@@ -1037,6 +1057,11 @@ section.sectionGrid1.blueSection.sectionGrid {
         right: -2vw;
         top: -13vw;
     }
+
+    .minigame .box-glow{
+        right: -2vw;
+        top: -13vw;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -1046,6 +1071,12 @@ section.sectionGrid1.blueSection.sectionGrid {
         right: -2vw;
         top: -13vw;
     }
+
+    .minigame .box-glow{
+        right: -2vw;
+        top: -13vw;
+    }
+
     .display.time .num {
         font-size: 5vw;
     }
